@@ -1,5 +1,6 @@
 FeatureExtraction:
     Bfx_fourier
+    Bfx_all
 
 InputOutput:
     Bio_printfeatures
