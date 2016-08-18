@@ -47,8 +47,8 @@ def Bio_printfeatures(X, *args):
      (c) D.Mery, PUC-DCC, 2010
      http://dmery.ing.puc.cl
 
-     With collaboration of:
-     Diego Patiño (dapatinoco@unal.edu.co) -> Translated implementation into python
+     With collaboration from:
+     Diego Patiño (dapatinoco@unal.edu.co) -> Translated implementation into python (2016)
     """
 
     N = np.max(X.shape)
