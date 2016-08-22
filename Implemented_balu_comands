@@ -1,12 +1,14 @@
 FeatureExtraction:
     Bfx_fourier
     Bfx_all
+    Bfx_basicgeo
 
 InputOutput:
     Bio_printfeatures
 
 ImagesAndData:
-    balu_load -> only could read 'datareal'
+    (only python) balu_load -> could only read .mat files
+    (only python) balu_imageload
 
 FeatureSelection:
     Bfs_clean

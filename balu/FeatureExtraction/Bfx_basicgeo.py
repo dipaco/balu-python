@@ -5,7 +5,7 @@ from skimage.measure import regionprops, perimeter
 from scipy.ndimage.morphology import distance_transform_cdt
 
 def Bfx_basicgeo(R, *args):
-    """[X, Xn] = Bfx_geobasic(R, options)
+    """X, Xn = Bfx_geobasic(R, options)
 
      Toolbox: Balu
 
