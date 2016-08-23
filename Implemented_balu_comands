@@ -2,6 +2,7 @@ FeatureExtraction:
     Bfx_fourier
     Bfx_all
     Bfx_basicgeo
+    Bfx_hugeo
 
 InputOutput:
     Bio_printfeatures
