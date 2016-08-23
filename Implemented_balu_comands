@@ -5,6 +5,7 @@ FeatureExtraction:
 
 InputOutput:
     Bio_printfeatures
+    Bio_plotfeatures
 
 ImagesAndData:
     (only python) balu_load -> could only read .mat files
