@@ -1,1 +1,2 @@
-__all__ = ['FeatureExtraction']
+__all__ = ['FeatureExtraction', 'FeatureSelection', 'FeatureTransformation', 'ImageProcessing', 'ImagesAndData',
+           'InputOutput', 'PerformanceEvaluation', 'Classification']
