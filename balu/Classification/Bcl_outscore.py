@@ -12,8 +12,8 @@ def Bcl_outscore(ds, score, options):
     if outp == 1:
         ds = score
     elif outp == 2:
-        ds = np.array([ds, score])
+        ds = np.concatenate((ds.ravel(), score.ravel()))
     elif outp == 3:
-        ds = np.array([ds, (Bft_sigmoid(score, options['param']) - 0.5) * 2])
+        ds = np.concatenate((ds.ravel(), (Bft_sigmoid(score, options['param']) - 0.5).ravel() * 2))
 
     return ds

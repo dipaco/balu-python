@@ -4,6 +4,7 @@ import warnings
 from matplotlib.pyplot import xlabel, ylabel, plot, show, legend, title, text, scatter, gcf, subplot, locator_params, tight_layout
 from mpl_toolkits.mplot3d import Axes3D
 
+
 def Bio_plotfeatures(X, d, Xn=[]):
     """Bio_plotfeatures(X, d, Xn)
 

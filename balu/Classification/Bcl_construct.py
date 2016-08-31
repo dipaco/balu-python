@@ -2,7 +2,7 @@
 import numpy as np
 
 
-def Bcl_construct(*args):
+def Bcl_construct(args):
     """ This function is not a classifier!!!
      This function is called by Balu classifier functions (such as Bcl_lda) to
      build the training and testing data.
