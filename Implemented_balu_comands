@@ -3,6 +3,7 @@ FeatureExtraction:
     Bfx_all
     Bfx_basicgeo
     Bfx_hugeo
+    Bfx_fourierdes
 
 InputOutput:
     Bio_printfeatures
@@ -27,3 +28,6 @@ Classification:
     Bcl_lda
     Bcl_construct
     Bcl_outscore
+
+DataSelectionAndGeneration:
+    Bds_gaussgen
