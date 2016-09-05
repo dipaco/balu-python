@@ -81,8 +81,8 @@ def Bio_plotfeatures(X, d, Xn=[]):
         else:
             d = np.squeeze(d)
 
-    dmin = np.min(d)
-    dmax = np.max(d)
+    dmin = int(np.min(d))
+    dmax = int(np.max(d))
 
     col = 'gbrcmykbgrcmykbgrcmykbgrcmykgbrcmykbgrcmykbgrcmykbgrcmykgbrcmykbgrcmykbgrcmykbgrcmyk'
     mar = 'ox+v^ox+v^ox+v^ox+v^ox+v^ox+v^ox+v^ox+v^ox+v^ox+v^ox+v^ox+v^ox+v^ox+v^ox+v^ox+v^ox+v^ox+v^'

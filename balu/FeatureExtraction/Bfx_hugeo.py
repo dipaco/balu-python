@@ -53,7 +53,7 @@ def Bfx_hugeo(R, options={}):
     Diego Patiño (dapatinoco@unal.edu.co) -> Translated implementation into python (2016)
     """
 
-    if not 'show' in options:
+    if 'show' not in options:
         options['show'] = False
 
     if options['show']:
