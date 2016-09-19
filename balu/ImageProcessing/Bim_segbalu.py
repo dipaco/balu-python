@@ -2,4 +2,7 @@
 
 
 def Bim_segbalu(I):
-    return 0
+    if len(I.shape) > 2:
+        return I[:, :, 1] > 128
+    else:
+        return I > 128

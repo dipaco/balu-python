@@ -4,6 +4,7 @@ FeatureExtraction:
     Bfx_basicgeo
     Bfx_hugeo
     Bfx_fourierdes
+    Bfx_geo
 
 InputOutput:
     Bio_printfeatures
@@ -16,6 +17,7 @@ ImagesAndData:
 FeatureTransformation
     Bft_pca
     Bft_sigmoid
+    Bft_norm
 
 FeatureSelection:
     Bfs_clean
