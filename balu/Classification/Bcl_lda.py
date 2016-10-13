@@ -5,9 +5,9 @@ from Bcl_outscore import Bcl_outscore
 
 
 def Bcl_lda(*args):
-    """ ds      = Bcl_lda(X,d,Xt,[])  Training & Testing together
+    """ ds, options = Bcl_lda(X,d,Xt,[])  Training & Testing together
      options = Bcl_lda(X,d,[])     Training only
-     ds      = Bcl_lda(Xt,options) Testing only
+     ds, options = Bcl_lda(Xt,options) Testing only
 
      Toolbox: Balu
         LDA (linear discriminant analysis) classifier.
@@ -83,6 +83,7 @@ def Bcl_lda(*args):
     """
 
     train, test, X, d, Xt, options = Bcl_construct(args)
+    options = options.copy()
     options['string'] = 'lda     '
     if len(d.shape) < 2:
         d = np.expand_dims(d, axis=1)
@@ -92,7 +93,7 @@ def Bcl_lda(*args):
         dmax = np.amax(d)
         d = d - dmin + 1
         N = d.size              # number of samples
-        K = dmax - dmin + 1     # number of classes
+        K = int(dmax - dmin + 1)     # number of classes
 
         pest = options['p'].size == 0
 
