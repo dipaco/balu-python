@@ -22,11 +22,11 @@ def balu_load(name):
 def balu_imageload(name):
     """ I = balu_imageload(image_filename)     #Image filename
 
-           Example:
-              from balu.ImagesAndData import balu_imageload
-              I = balu_imageload(image_filename)         # Image filename
+       Example:
+          from balu.ImagesAndData import balu_imageload
+          I = balu_imageload(image_filename)         # Image filename
 
-        (c) Diego Patiño (dapatinoco@unal.edu.co) (2016)
-        """
+    (c) Diego Patiño (dapatinoco@unal.edu.co) (2016)
+    """
     dir_path = dirname(realpath(__file__))
     return imread(join(dir_path, name))
