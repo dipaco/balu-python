@@ -5,6 +5,7 @@ FeatureExtraction:
     Bfx_hugeo
     Bfx_fourierdes
     Bfx_geo
+    Bfx_fitellipse
 
 InputOutput:
     Bio_printfeatures
@@ -29,6 +30,7 @@ FeatureTransformation
 
 FeatureSelection:
     Bfs_clean
+    Bfs_noposition
 
 PerformanceEvaluation:
     Bev_confusion

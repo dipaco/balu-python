@@ -41,9 +41,9 @@ def Bim_morphoreg(J, t=None):
     else:
         Ro = J > t
 
-    A = remove_small_objects(Ro, int(np.floor(Ro.size / 100.0)))
+    A = remove_small_objects(Ro, int(np.floor(Ro.size / 100.0)), connectivity=2)
     C = closing(A, disk(7))
-    R = remove_small_holes(C, np.floor(Ro.size / 100))
+    R = remove_small_holes(C, np.floor(Ro.size / 100), connectivity=2)
     E = R - erosion(R, selem=square(3))
 
     return R, E
