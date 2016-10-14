@@ -16,10 +16,11 @@ ImageProcessing:
     Bim_rgb2hcm
     Bim_segbalu
     Bim_segotsu
+    Bim_segmowgli
 
 ImagesAndData:
-    (only python) balu_load -> could only read .mat files
-    (only python) balu_imageload
+    (only python version) balu_load -> it can only read .mat files for now
+    (only python version) balu_imageload
 
 FeatureTransformation
     Bft_pca
