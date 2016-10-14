@@ -10,6 +10,13 @@ InputOutput:
     Bio_printfeatures
     Bio_plotfeatures
 
+ImageProcessing:
+    Bim_maxmin
+    Bim_morphoreg
+    Bim_rgb2hcm
+    Bim_segbalu
+    Bim_segotsu
+
 ImagesAndData:
     (only python) balu_load -> could only read .mat files
     (only python) balu_imageload
