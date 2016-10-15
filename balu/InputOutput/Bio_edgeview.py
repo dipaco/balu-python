@@ -5,7 +5,7 @@ from skimage.morphology import dilation, square
 from matplotlib.pyplot import imshow, show, draw
 
 
-def Bio_edgeview(B, E, cc=None, g=1):
+def Bio_edgeview(B, E, cc=None, g=1, show_now=True):
     """ Bio_edgeview(B, E, c, g)
 
      Toolbox: Balu
@@ -63,14 +63,13 @@ def Bio_edgeview(B, E, cc=None, g=1):
     filterwarnings('ignore')
     E = dilation(E, square(g))
     ii, jj = np.where(E == 1)
-    B1[ii, jj] = cc[0]*255
-    B2[ii, jj] = cc[1]*255
-    B3[ii, jj] = cc[2]*255
+    B1[ii, jj] = cc[0]
+    B2[ii, jj] = cc[1]
+    B3[ii, jj] = cc[2]
     Y = B.astype(float)
     Y[:, :, 0] = B1
     Y[:, :, 1] = B2
     Y[:, :, 2] = B3
-    #imshow(uint8(Y*256))
-    imshow(Y.astype('uint8'))
-    draw()
-    show()
+    imshow((255*Y).astype('uint8'))
+    if show_now:
+        show()

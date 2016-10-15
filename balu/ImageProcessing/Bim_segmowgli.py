@@ -97,8 +97,6 @@ def Bim_segmowgli(J, R=None, Amin=20, sig=2):
     return F, m
 
 def edge_LoG(I, sigma):
-    lena = sp.misc.lena()
-    #LoG = nd.gaussian_laplace(I, sigma)
     LoG = laplace(gaussian(I, sigma=sigma), ksize=3)
     thres = np.absolute(LoG).mean() * 1.0
     output = sp.zeros(LoG.shape)

@@ -7,9 +7,14 @@ FeatureExtraction:
     Bfx_geo
     Bfx_fitellipse
 
+FeatureAnalysis:
+    Bfa_jfisher
+
 InputOutput:
     Bio_printfeatures
     Bio_plotfeatures
+    Bio_edgeview
+    Bio_labelregion
 
 ImageProcessing:
     Bim_maxmin
