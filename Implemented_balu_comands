@@ -51,6 +51,7 @@ Classification:
     Bcl_outscore
     Bcl_structure
     Bcl_knn
+    Bcl_maha
 
 DataSelectionAndGeneration:
     Bds_gaussgen

@@ -7,9 +7,9 @@ from scipy.stats import mode
 
 
 def Bcl_knn(*args):
-    """ ds = Bcl_knn(X, d, Xt, options)  Training & Testing together
+    """ ds, options = Bcl_knn(X, d, Xt, options)  Training & Testing together
      options = Bcl_knn(X, d, options)     Training only
-     ds      = Bcl_knn(Xt, options)      Testing only
+     ds, _ = Bcl_knn(Xt, options)      Testing only
 
      Toolbox: Balu
         KNN (k-nearest neighbors) classifier using randomized kd-tree
