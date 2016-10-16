@@ -52,6 +52,7 @@ Classification:
     Bcl_structure
     Bcl_knn
     Bcl_maha
+    Bcl_qda
 
 DataSelectionAndGeneration:
     Bds_gaussgen

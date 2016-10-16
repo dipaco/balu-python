@@ -48,7 +48,7 @@ def Bcl_lda(*args):
             Xt = data['Xt']
             dt = data['dt']
             Bio_plotfeatures(X, d)                  # plot feature space
-            op = {'p': np.array([])}
+            op = {'p': []}
             ds, options = Bcl_lda(X, d, Xt, op)     # LDA classifier
             p = Bev_performance(ds, dt)             # performance on test data
             print p
@@ -64,7 +64,7 @@ def Bcl_lda(*args):
             Xt = data['Xt']
             dt = data['dt']
             Bio_plotfeatures(X, d)                  # plot feature space
-            op = {'p': np.array([0.75, 0.25])}      # prior probability for each class
+            op = {'p': [0.75, 0.25]}                # prior probability for each class
             op = Bcl_lda(X,d,op);                   # LDA - training
 
         Example: Testing only (after training only example):
@@ -95,7 +95,7 @@ def Bcl_lda(*args):
         N = d.size              # number of samples
         K = int(dmax - dmin + 1)     # number of classes
 
-        pest = options['p'].size == 0
+        pest = np.array(options['p']).size == 0
 
         p = np.zeros((K, 1))
         if not pest:
@@ -121,7 +121,7 @@ def Bcl_lda(*args):
                 p[k, 0] = L[k, 0] / N
 
         Cw /= (N - K)
-        options['Cw1'] = np.linalg.pinv(Cw)
+        options['Cw1'] = np.linalg.inv(Cw)
         options['dmin'] = dmin
         options['mc'] = mc
         options['p'] = p
