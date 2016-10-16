@@ -9,12 +9,15 @@ FeatureExtraction:
 
 FeatureAnalysis:
     Bfa_jfisher
+    Bfa_score
+    Bfa_sp100
 
 InputOutput:
     Bio_printfeatures
     Bio_plotfeatures
     Bio_edgeview
     Bio_labelregion
+    Bio_statusbar
 
 ImageProcessing:
     Bim_maxmin
@@ -36,6 +39,7 @@ FeatureTransformation
 FeatureSelection:
     Bfs_clean
     Bfs_noposition
+    Bfs_sfs
 
 PerformanceEvaluation:
     Bev_confusion
@@ -45,6 +49,7 @@ Classification:
     Bcl_lda
     Bcl_construct
     Bcl_outscore
+    Bcl_structure
 
 DataSelectionAndGeneration:
     Bds_gaussgen
