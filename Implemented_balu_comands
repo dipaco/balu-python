@@ -50,6 +50,7 @@ Classification:
     Bcl_construct
     Bcl_outscore
     Bcl_structure
+    Bcl_knn
 
 DataSelectionAndGeneration:
     Bds_gaussgen

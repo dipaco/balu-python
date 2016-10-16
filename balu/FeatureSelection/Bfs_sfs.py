@@ -48,9 +48,9 @@ def Bfs_sfs(X, d, options={'show': True}, hold=False):
         op = {
             'm': 10,                            # 10 features will be selected
             'show': True,                       # display results
-            'b': {'name': 'lda',                # SFS with KNN with 5 neigbors
+            'b': {'name': 'knn',                # SFS with KNN with 5 neigbors
                   'options': {
-                      'knn': 5
+                      'k': 5
                   }
             }
         }
