@@ -121,7 +121,7 @@ def Bcl_lda(*args):
                 p[k, 0] = L[k, 0] / N
 
         Cw /= (N - K)
-        options['Cw1'] = np.linalg.inv(Cw)
+        options['Cw1'] = np.linalg.pinv(Cw)
         options['dmin'] = dmin
         options['mc'] = mc
         options['p'] = p

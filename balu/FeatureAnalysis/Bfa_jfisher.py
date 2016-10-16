@@ -20,6 +20,9 @@ def Bfa_jfisher(X, d, p=None):
      Diego Patiño (dapatinoco@unal.edu.co) -> Translated implementation into python (2016)
      """
 
+    if len(d.shape) == 1:
+        d = np.expand_dims(d, axis=1)
+
     n, M = X.shape
     dmin = d.min()
 
@@ -53,5 +56,9 @@ def Bfa_jfisher(X, d, p=None):
 
     # Fisher discriminant
     filterwarnings('ignore')
-    J = np.trace(np.linalg.solve(Cw, Cb))
+    #print Cw
+    xxx, _, _, _ = np.linalg.lstsq(Cw, Cb)
+    #xxx = np.linalg.pinv(Cw)
+    #J = np.trace(np.linalg.solve(Cw, Cb))
+    J = np.trace(xxx)
     return J
