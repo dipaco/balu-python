@@ -5,9 +5,9 @@ from Bcl_outscore import Bcl_outscore
 
 
 def Bcl_qda(*args):
-    """% ds      = Bcl_qda(X,d,Xt,[])  Training & Testing together
-     options = Bcl_qda(X,d,[])     Training only
-     ds      = Bcl_qda(Xt,options) Testing only
+    """ ds, options = Bcl_qda(X, d, Xt, op)  Training & Testing together
+     options = Bcl_qda(X, d, op)     Training only
+     ds, options = Bcl_qda(Xt, options) Testing only
 
      Toolbox: Balu
         QDA (quadratic discriminant analysis) classifier.
