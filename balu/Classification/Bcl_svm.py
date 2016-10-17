@@ -2,13 +2,12 @@
 import numpy as np
 from Bcl_construct import Bcl_construct
 from sklearn import svm
-from Bcl_outscore import Bcl_outscore
 
 
 def Bcl_svm(*args):
-    """ ds      = Bcl_svm(X,d,Xt,options)  Training & Testing together
-     options = Bcl_svm(X,d,options)     Training only
-     ds      = Bcl_svm(Xt,options)      Testing only
+    """ ds      = Bcl_svm(X, d, Xt, options)  Training & Testing together
+     options = Bcl_svm(X, d, options)     Training only
+     ds      = Bcl_svm(Xt, options)      Testing only
 
      Toolbox: Balu
         Support Vector Machine approach using the scikit-learn library.
@@ -95,8 +94,8 @@ def Bcl_svm(*args):
         if isinstance(c, int):
             if 0 <= c < len(all_kernels):
                 k = all_kernels[c]
-        elif options['kernel'] in all_kernels:
-            k = options['kernel']
+        elif c in all_kernels:
+            k = c
 
         clf = svm.SVC()
         clf.fit(X, d)

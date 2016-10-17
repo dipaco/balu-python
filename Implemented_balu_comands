@@ -55,6 +55,7 @@ Classification:
     Bcl_qda
     Bcl_dmin
     Bcl_svm
+    Bcl_nn -> Replacement of Bcl_nnglm from Matlab version
 
 DataSelectionAndGeneration:
     Bds_gaussgen
