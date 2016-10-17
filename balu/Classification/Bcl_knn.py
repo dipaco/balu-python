@@ -13,7 +13,7 @@ def Bcl_knn(*args):
 
      Toolbox: Balu
         KNN (k-nearest neighbors) classifier using randomized kd-tree
-        forest from FLANN. This implementation requires VLFeat Toolbox.
+        forest from FLANN. This implementation requires scikit-learn.
 
         Design data:
            X is a matrix with features (columns)
@@ -25,9 +25,9 @@ def Bcl_knn(*args):
 
         Output:
            ds is the classification on test data
-           options.kdtree contains information about the randomized kdtree
-           (from function vl_kdtreebuilf of VLFeat Toolbox).
-           options.string is a 8 character string that describes the performed
+           options['kdtree'] contains information about the randomized kdtree
+           (from KDTree function of scikit-learn).
+           options['string'] is a 8 character string that describes the performed
            classification (e.g., 'knn,10  ' means knn with k=10).
 
         Example: Training & Test together:

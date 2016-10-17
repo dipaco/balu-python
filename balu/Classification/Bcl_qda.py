@@ -24,10 +24,10 @@ def Bcl_qda(*args):
 
         Output:
            ds is the classification on test data
-           options.dmin contains min(d).
-           options.Ck is covariance matrix of each class.
-           options.mc contains the centroids of each class.
-           options.string is a 8 character string that describes the performed
+           options['dmin'] contains min(d).
+           options['Ck'] is covariance matrix of each class.
+           options['mc'] contains the centroids of each class.
+           options['string'] is a 8 character string that describes the performed
            classification (in this case 'qda     ').
 
         Reference:

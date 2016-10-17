@@ -21,10 +21,10 @@ def Bcl_maha(*args):
 
         Output:
            ds is the classification on test data
-           options.mc contains the centroids of each class.
-           options.dmin contains min(d).
-           options.Ck is covariance matrix of each class.
-           options.string is a 8 character string that describes the performed
+           options['mc'] contains the centroids of each class.
+           options['dmin'] contains min(d).
+           options['Ck'] is covariance matrix of each class.
+           options['string'] is a 8 character string that describes the performed
            classification (in this case 'maha    ').
 
         Example: Training & Test together:

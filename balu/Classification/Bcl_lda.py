@@ -25,10 +25,10 @@ def Bcl_lda(*args):
 
         Output:
            ds is the classification on test data
-           options.dmin contains min(d).
-           options.Cw1 is inv(within-class covariance).
-           options.mc contains the centroids of each class.
-           options.string is a 8 character string that describes the performed
+           options['dmin'] contains np.min(d).
+           options['Cw1'] is pinv(within-class covariance).
+           options['mc'] contains the centroids of each class.
+           options['string'] is a 8 character string that describes the performed
            classification (in this case 'lda     ').
 
         Reference:

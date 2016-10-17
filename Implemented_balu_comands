@@ -54,6 +54,7 @@ Classification:
     Bcl_maha
     Bcl_qda
     Bcl_dmin
+    Bcl_svm
 
 DataSelectionAndGeneration:
     Bds_gaussgen
