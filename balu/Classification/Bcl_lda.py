@@ -95,11 +95,12 @@ def Bcl_lda(*args):
         N = d.size              # number of samples
         K = int(dmax - dmin + 1)     # number of classes
 
-        pest = np.array(options['p']).size == 0
+        options['p'] = np.array(options['p'])
+        pest = options['p'].size == 0
 
-        p = np.zeros((K, 1))
+        p = np.zeros(K)
         if not pest:
-            p[:, 0] = options['p']
+            p[:] = options['p']
 
         m = X.shape[1]
         L = np.zeros((K, 1))
@@ -118,7 +119,7 @@ def Bcl_lda(*args):
             Cw = Cw + Ck * (L[k, 0] - 1)        # within-class covariance
 
             if pest:
-                p[k, 0] = L[k, 0] / N
+                p[k] = L[k, 0] / N
 
         Cw /= (N - K)
         options['Cw1'] = np.linalg.inv(Cw)
@@ -133,7 +134,7 @@ def Bcl_lda(*args):
         D = np.zeros((Nt, K))
         for k in range(int(K)):
             C1 = np.dot(options['Cw1'], options['mc'][:, k][np.newaxis].T)
-            C2 = (-0.5 * np.dot(options['mc'][:, k].T, C1) + np.log(options['p'][k, 0])) * np.ones((Nt, 1))
+            C2 = (-0.5 * np.dot(options['mc'][:, k].T, C1) + np.log(options['p'][k])) * np.ones((Nt, 1))
             D[:, k] = np.squeeze(np.dot(Xt, C1) + C2)
 
         a = np.amax(D, axis=1)

@@ -26,8 +26,8 @@ def Bcl_qda(*args):
            ds is the classification on test data
            options['dmin'] contains min(d).
            options['Ck'] is covariance matrix of each class.
-           options['mc'] contains the centroids of each class.
-           options['string'] is a 8 character string that describes the performed
+           optionsmc contains the centroids of each class.
+           options.string is a 8 character string that describes the performed
            classification (in this case 'qda     ').
 
         Reference:
@@ -88,18 +88,19 @@ def Bcl_qda(*args):
         dmin = d.min()
         dmax = d.max()
         d = d - dmin + 1
-        N = d.shape[0]      # number of samples
-        K = dmax - dmin + 1 # number of classes
+        N = d.shape[0]               # number of samples
+        K = int(dmax - dmin + 1)     # number of classes
 
-        pest = np.array(options['p']).size == 0
+        options['p'] = np.array(options['p'])
+        pest = options['p'].size == 0
 
         if pest:
-            p = np.zeros((K, 1))
+            p = np.zeros(K)
         else:
             p = options['p']
 
         m = X.shape[1]
-        L = np.zeros((K, 1))
+        L = np.zeros((int(K), 1))
 
         mc = np.zeros((m, K))
         Ck = np.zeros((m, m, K))

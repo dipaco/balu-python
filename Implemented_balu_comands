@@ -18,6 +18,7 @@ InputOutput:
     Bio_edgeview
     Bio_labelregion
     Bio_statusbar
+    Bio_decisionline
 
 ImageProcessing:
     Bim_maxmin

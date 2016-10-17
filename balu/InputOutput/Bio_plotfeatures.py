@@ -5,7 +5,7 @@ from matplotlib.pyplot import xlabel, ylabel, plot, show, legend, title, text, s
 from mpl_toolkits.mplot3d import Axes3D
 
 
-def Bio_plotfeatures(X, d, Xn=[]):
+def Bio_plotfeatures(X, d, Xn=[], hold=True):
     """Bio_plotfeatures(X, d, Xn)
 
      Toolbox: Balu
@@ -18,40 +18,41 @@ def Bio_plotfeatures(X, d, Xn=[]):
      For m > 3 features, m x m 2D plots are given(feature i vs.feature j)
 
      Example 1: 1D & 2D
-     from balu.InputOutput import Bio_plotfeatures
-     from balu.ImagesAndData import balu_load
+        from balu.InputOutput import Bio_plotfeatures
+        from balu.ImagesAndData import balu_load
+        from matplotlib.pyplot import figure
 
-     data = balu_load('datagauss')          # simulated data(2 classes, 2 features)
-     X = data['X']
-     d = data['d']
-     figure(1)
-     Bio_plotfeatures(X(:, 1), d, 'x1')     # histogram of feature 1
-     figure(2)
-     Bio_plotfeatures(X, d)                 # plot feature space in 2D(2 features)
+        data = balu_load('datagauss')          # simulated data(2 classes, 2 features)
+        X = data['X']
+        d = data['d']
+        figure(1)
+        Bio_plotfeatures(X[:, 0], d, 'x1')     # histogram of feature 1
+        figure(2)
+        Bio_plotfeatures(X, d)                 # plot feature space in 2D(2 features)
 
      Example 2: 3D
-     from balu.InputOutput import Bio_plotfeatures
-     from balu.ImagesAndData import balu_load
+        from balu.InputOutput import Bio_plotfeatures
+        from balu.ImagesAndData import balu_load
 
-     data = balu_load('datareal ')          # real data
-     f = data['f']
-     d = data['d']
-     X = f(:, [220 174 234]);               # only three features are choosen
-     Bio_plotfeatures(X, d)                 # plot feature space in 3D(3 features)
+        data = balu_load('datareal')          # real data
+        f = data['f']
+        d = data['d']
+        X = f[:, [220, 174, 234]]             # only three features are choosen
+        Bio_plotfeatures(X, d)                # plot feature space in 3D(3 features)
 
      Example 3: 5D(using feature selection)
-     from balu.InputOutput import Bio_plotfeatures
-     from balu.ImagesAndData import balu_load
+         from balu.InputOutput import Bio_plotfeatures
+         from balu.ImagesAndData import balu_load
 
-     data = balu_load('datareal ')             # real data
-     f = data['f']
-     d = data['d']
-     op['m'] = 5;                              # 5 features will be selected
-     op['s'] = 0.75;                           # only 75 % of sample will be used
-     op['show'] = False                        # display results
-     op['b']['name'] = 'fisher';               # definition SFS with Fisher
-     s = Bfs_balu(f, d, op);                   # feature selection
-     Bio_plotfeatures(f[:, s], d)              # plot feature space for 5 features
+         data = balu_load('datareal ')             # real data
+         f = data['f']
+         d = data['d']
+         op['m'] = 5;                              # 5 features will be selected
+         op['s'] = 0.75;                           # only 75 % of sample will be used
+         op['show'] = False                        # display results
+         op['b']['name'] = 'fisher';               # definition SFS with Fisher
+         s = Bfs_balu(f, d, op);                   # feature selection
+         Bio_plotfeatures(f[:, s], d)              # plot feature space for 5 features
 
      See also Bev_roc.
 
@@ -179,4 +180,5 @@ def Bio_plotfeatures(X, d, Xn=[]):
                 if j == m:
                     xlabel(xl)
 
-    show()
+    if hold:
+        show()

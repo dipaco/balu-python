@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 import numpy as np
+import copy
 from Bcl_construct import Bcl_construct
-from Bcl_outscore import Bcl_outscore
 
 
 def Bcl_structure(*args):
-    """ ds      = Bcl_structure(X,d,Xt,options)  Training & Testing together
-     options = Bcl_structure(X,d,options)     Training only
-     ds      = Bcl_structure(Xt,options)      Testing only
+    """ ds = Bcl_structure(X, d, Xt, options)  Training & Testing together
+     options = Bcl_structure(X, d, options)     Training only
+     ds = Bcl_structure(Xt, options)      Testing only
 
      Toolbox: Balu
         Classification using Balu classifier(s) defined in structure b.
@@ -70,7 +70,7 @@ def Bcl_structure(*args):
      Diego Patiño (dapatinoco@unal.edu.co) -> Translated implementation into python (2016)
     """
     train, test, X, d, Xt, options = Bcl_construct(args)
-    options = options.copy()
+    options = copy.deepcopy(options)
 
     b = options
     if not isinstance(b, list):
@@ -88,7 +88,7 @@ def Bcl_structure(*args):
             b[i]['options'] = cl(X, d, b[i]['options'])
 
         options = b
-        ds = options
+        output = options
 
     if test:
         nt = Xt.shape[0]
@@ -115,4 +115,6 @@ def Bcl_structure(*args):
         else:
             ds = ds3[:, :, 0]
 
-    return ds, options
+        output = ds, options
+
+    return output

@@ -2,7 +2,7 @@
 import numpy as np
 from warnings import filterwarnings
 from skimage.morphology import dilation, square
-from matplotlib.pyplot import imshow, show, draw
+from matplotlib.pyplot import imshow, show
 
 
 def Bio_edgeview(B, E, cc=None, g=1, show_now=True):

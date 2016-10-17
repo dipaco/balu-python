@@ -98,7 +98,7 @@ def Bcl_svm(*args):
             k = c
 
         clf = svm.SVC()
-        clf.fit(X, d)
+        clf.fit(X, np.squeeze(d))
         options['svmStruct'] = clf
         output = options
 
