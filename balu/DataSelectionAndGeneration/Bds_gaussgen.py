@@ -39,6 +39,10 @@ def Bds_gaussgen(m, s, n):
     Diego Patiño (dapatinoco@unal.edu.co) -> Translated implementation into python (2016)
     """
 
+    m = np.array(m)
+    s = np.array(s)
+    n = np.array(n)
+
     if len(n.shape) > 1:
         n = np.squeeze(n)
 

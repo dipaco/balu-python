@@ -102,7 +102,7 @@ def Bfx_fitellipse(R, options=None):
         T[1, 0] = a[1, 0] / 2.0
         T[1, 1] = a[2, 0]
         p = np.array([a[3], a[4]])
-        mc = np.dot(-np.linalg.inv(2*T), p)
+        mc = np.dot(-np.linalg.pinv(2*T), p)
 
         # get scale factor
         val = np.dot(mc.T, np.dot(T, mc))

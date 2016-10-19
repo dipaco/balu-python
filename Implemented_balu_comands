@@ -6,6 +6,7 @@ FeatureExtraction:
     Bfx_fourierdes
     Bfx_geo
     Bfx_fitellipse
+    Bfx_flusser
 
 FeatureAnalysis:
     Bfa_jfisher

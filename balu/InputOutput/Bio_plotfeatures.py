@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 import warnings
-from matplotlib.pyplot import xlabel, ylabel, plot, show, legend, title, text, scatter, gcf, subplot, locator_params, tight_layout
+from matplotlib.pyplot import xlabel, ylabel, plot, show, legend, title, text, scatter, gcf, subplot, locator_params, tight_layout, clf
 from mpl_toolkits.mplot3d import Axes3D
 
 
@@ -64,6 +64,8 @@ def Bio_plotfeatures(X, d, Xn=[], hold=True):
      Diego Patiño (dapatinoco@unal.edu.co) -> Translated implementation into python (2016)
     """
 
+    clf()
+
     if len(X.shape) > 1:
         m = X.shape[1]
     else:
@@ -105,7 +107,7 @@ def Bio_plotfeatures(X, d, Xn=[], hold=True):
                 h = np.hstack((0, h, 0))
                 plot(x, h / A, color=col[k])
 
-            if len(Xn) == 0:
+            if len(Xn) != 0:
                 xlabel(Xn)
             else:
                 xlabel('feature value')

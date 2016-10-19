@@ -40,6 +40,7 @@ def Bfx_basicgeo(R, *args):
     else:
         options = {'show': False}
 
+    R = R.astype(bool)
     N = R.shape[0]
     filterwarnings('ignore')
     stats = regionprops(R.astype('uint8'))
