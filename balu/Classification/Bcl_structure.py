@@ -28,38 +28,61 @@ def Bcl_structure(*args):
            ds is the classification on test data (one column per classifier)
 
         Example: Training & Test together:
-           load datagauss                                                        % simulated data (2 classes, 2 features)
-           b(1).name = 'knn';   b(1).options.k = 5;                              % KNN with 5 neighbors
-           b(2).name = 'knn';   b(2).options.k = 7;                              % KNN with 7 neighbors
-           b(3).name = 'knn';   b(3).options.k = 9;                              % KNN with 9 neighbors
-           b(4).name = 'lda';   b(4).options.p = [];                             % LDA
-           b(5).name = 'qda';   b(5).options.p = [];                             % QDA
-           b(6).name = 'nnglm'; b(6).options.method = 3; b(6).options.iter = 10; % Nueral network
-           b(7).name = 'svm';   b(7).options.kernel = 4;                         % rbf-SVM
-           b(8).name = 'maha';  b(8).options = [];                               % Euclidean distance
-           b(9).name = 'dmin';  b(9).options = [];                               % Mahalanobis distance
-           op = b;
-           ds = Bcl_structure(X,d,Xt,op);                                        % ds has 9 columns
-           p = Bev_performance(ds,dt)                                            % p has 9 performances
+            from balu.ImagesAndData import balu_load
+            from balu.Classification import Bcl_structure
+            from balu.PerformanceEvaluation import Bev_performance
+
+            data = balu_load('datagauss')                       # simulated data(2 classes, 2 features)
+            X = data['X']
+            d = data['d']
+            Xt = data['Xt']
+            dt = data['dt']
+            Xn = ['\beta_1', '\beta_2']
+
+            b = [
+                {'name': 'knn',  'options': {'k': 5  }},         # KNN with 5 neighbors
+                {'name': 'knn',  'options': {'k': 7  }},         # KNN with 5 neighbors
+                {'name': 'knn',  'options': {'k': 9  }},         # KNN with 5 neighbors
+                {'name': 'lda',  'options': {'p': [] }},         # LDA
+                {'name': 'qda',  'options': {'p': [] }},         # QDA
+                {'name': 'nn' ,  'options': {'method': 2}},      # Neural Network
+                {'name': 'svm',  'options': {'kernel': 3}},      # rbf-SVM
+                {'name': 'maha', 'options': {}},                 # Mahalanobis distance
+                {'name': 'dmin', 'options': {}},                 # Euclidean distance
+            ]
+            op = b
+            ds, struct = Bcl_structure(X, d, Xt, op)             # ds has 9 columns
+            p = Bev_performance(ds, dt)                          # p has 9 performances
 
 
         Example: Training only
-           load datagauss                                                        % simulated data (2 classes, 2 features)
-           b(1).name = 'knn';   b(1).options.k = 5;                              % KNN with 5 neighbors
-           b(2).name = 'knn';   b(2).options.k = 7;                              % KNN with 7 neighbors
-           b(3).name = 'knn';   b(3).options.k = 9;                              % KNN with 9 neighbors
-           b(4).name = 'lda';   b(4).options.p = [];                             % LDA
-           b(5).name = 'qda';   b(5).options.p = [];                             % QDA
-           b(6).name = 'nnglm'; b(6).options.method = 3; b(6).options.iter = 10; % Nueral network
-           b(7).name = 'svm';   b(7).options.kernel = 4;                         % rbf-SVM
-           b(8).name = 'maha';  b(8).options = [];                               % Euclidean distance
-           b(9).name = 'dmin';  b(9).options = [];                               % Mahalanobis distance
-           op = b;
-           op = Bcl_structure(X,d,op);                                           % Training only
+            from balu.ImagesAndData import balu_load
+            from balu.Classification import Bcl_structure
+
+            data = balu_load('datagauss')                       # simulated data(2 classes, 2 features)
+            X = data['X']
+            d = data['d']
+            Xt = data['Xt']
+            dt = data['dt']
+            Xn = ['\beta_1', '\beta_2']
+
+            b = [
+                {'name': 'knn',  'options': {'k': 5  }},         # KNN with 5 neighbors
+                {'name': 'knn',  'options': {'k': 7  }},         # KNN with 5 neighbors
+                {'name': 'knn',  'options': {'k': 9  }},         # KNN with 5 neighbors
+                {'name': 'lda',  'options': {'p': [] }},         # LDA
+                {'name': 'qda',  'options': {'p': [] }},         # QDA
+                {'name': 'nn' ,  'options': {'method': 2}},      # Neural Network
+                {'name': 'svm',  'options': {'kernel': 3}},      # rbf-SVM
+                {'name': 'maha', 'options': {}},                 # Mahalanobis distance
+                {'name': 'dmin', 'options': {}},                 # Euclidean distance
+            ]
+            op = b
+            struct = Bcl_structure(X, d, op)                     # Training only
 
         Example: Testing only (after training only example):
-           ds = Bcl_structure(Xt,op);                                            % Testing only
-           p  = Bev_performance(ds,dt)
+            ds, _ = Bcl_structure(Xt, struct)                    # Testing only
+            p = Bev_performance(ds, dt)
 
         See also Bcl_exe.
 

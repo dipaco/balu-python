@@ -5,7 +5,7 @@ from Bio_plotfeatures import Bio_plotfeatures
 from balu.Classification import Bcl_structure
 
 
-def Bio_decisionline(X, d, Xn, op, precsision=0.3):
+def Bio_decisionline(X, d, Xn, op):
     """ Bio_decisionline(X, d, Xn, op)
 
      Toolbox: Balu
@@ -15,9 +15,6 @@ def Bio_decisionline(X, d, Xn, op, precsision=0.3):
         X: Sample data
         d: classification of samples
         op: output of a trained classifier.
-        precision: value in (0, 1] range. Controls the granularity of the decision line plot.
-                   Higher values make the function faster but with poor resolution. Lower values
-                   make the the function perform slower but with good resolution. Default values is 0.3
 
         Example:
             from balu.ImagesAndData import balu_load
@@ -60,14 +57,15 @@ def Bio_decisionline(X, d, Xn, op, precsision=0.3):
     n = len(op)
 
     ax = gca()
-    s = precsision
     xl = ax.get_xlim()
     #x = xl[0]:s:xl[1]
-    x = np.linspace(xl[0], xl[1], int((xl[1] - xl[0]) / s))
+    #x = np.linspace(xl[0], xl[1], int((xl[1] - xl[0]) / s))
+    x = np.linspace(xl[0], xl[1], 150)
     nx = x.size
     yl = ax.get_ylim()
     #y = yl[0]:s:yl[1]
-    y = np.linspace(yl[0], yl[1], int((yl[1] - yl[0]) / s))
+    #y = np.linspace(yl[0], yl[1], int((yl[1] - yl[0]) / s))
+    y = np.linspace(yl[0], yl[1], 150)
     ny = y.size
     rx = np.dot(np.ones((ny, 1)), x[np.newaxis, :])
     ry = np.dot(y[:, np.newaxis], np.ones((1, nx)))

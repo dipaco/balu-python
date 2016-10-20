@@ -82,7 +82,7 @@ def Bcl_dmin(*args):
         dmin = d.min()
         dmax = d.max()
         d = d - dmin + 1
-        n = dmax - dmin + 1
+        n = int(dmax - dmin + 1)
         mc = np.zeros((n, m))
 
         for i in range(int(n)):

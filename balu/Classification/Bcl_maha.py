@@ -83,7 +83,7 @@ def Bcl_maha(*args):
         m = X.shape[1]
         dmin = d.min()
         dmax = d.max()
-        n = dmax - dmin + 1
+        n = int(dmax - dmin + 1)
         d = d - dmin + 1
         mc = np.zeros((n, m))
         M = X.shape[1]
@@ -105,7 +105,9 @@ def Bcl_maha(*args):
         Nt = Xt.shape[0]
         ds = np.zeros((Nt, 1))
         sc = ds.copy()
+        M = Xt.shape[1]
 
+        Ck = np.zeros((M, M, n))
         for k in range(n):
             Ck[:, :, k] = np.linalg.pinv(options['Ck'][:, :, k])
 
@@ -122,6 +124,6 @@ def Bcl_maha(*args):
 
         ds = ds + options['dmin'] - 1
         ds = Bcl_outscore(ds, sc, options)
-        output = ds, output
+        output = ds, options
 
     return output

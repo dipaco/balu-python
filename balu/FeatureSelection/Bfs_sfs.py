@@ -148,5 +148,6 @@ def Bfs_sfs(X, d, options={'show': True}, hold=False):
     if show and hold:
         plt.pause(-1)
         #delete(ff)
+    plt.ioff()
 
     return selec.astype(int)

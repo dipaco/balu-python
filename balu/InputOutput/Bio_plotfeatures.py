@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 import warnings
-from matplotlib.pyplot import xlabel, ylabel, plot, show, legend, title, text, scatter, gcf, subplot, locator_params, tight_layout, clf
+from matplotlib.pyplot import xlabel, ylabel, plot, show, legend, title, text, scatter, gcf, subplot, locator_params, clf
 from mpl_toolkits.mplot3d import Axes3D
 
 
@@ -162,7 +162,6 @@ def Bio_plotfeatures(X, d, Xn=[], hold=True):
                 for k in range(dmin, dmax + 1):
                     ii = np.where(d == k)
                     scatter(zi[ii], zj[ii], c=col[k], marker=mar[k])
-                    tight_layout(pad=0.4, w_pad=0.5, h_pad=0.5)
                     locator_params(nbins=3)
 
                     if scflag:

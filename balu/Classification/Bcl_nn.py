@@ -100,7 +100,7 @@ def Bcl_nn(*args):
         dmin = d.min()
 
         net = MLPClassifier(solver='lbfgs', activation=m, max_iter=options['iter'])
-        net.fit(X, d)
+        net.fit(X, d.ravel())
         options['net'] = net
         options['dmin'] = dmin
         output = options
