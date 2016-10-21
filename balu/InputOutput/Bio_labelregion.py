@@ -81,7 +81,7 @@ def Bio_labelregion(I, L, c):
     subplot(1, 2, 2)
     title('Class labels')
     imshow(D)
-    colorbar().set_ticks(range(c + 1))
+    colorbar().set_ticks(list(range(c + 1)))
     subplot(1, 2, 1)
     Bio_edgeview(J, np.zeros(J.shape), np.array([1, 1, 0]), show_now=False)
     title('Original image')

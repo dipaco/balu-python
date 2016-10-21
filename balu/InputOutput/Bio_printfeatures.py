@@ -59,4 +59,4 @@ def Bio_printfeatures(X, *args):
         Xn = N * ['']
 
     for k in range(len(Xn)):
-        print '{0} {1} {2}'.format(k, Xn[k], np.squeeze(X)[k])
+        print('{0} {1} {2}'.format(k, Xn[k], np.squeeze(X)[k]))

@@ -44,7 +44,7 @@ def Bfx_fourierdes(R, options={}):
         options['Nfourierdes'] = 16
 
     if options['show']:
-        print '--- extracting Fourier descriptors...'
+        print('--- extracting Fourier descriptors...')
 
     N = options['Nfourierdes']
 

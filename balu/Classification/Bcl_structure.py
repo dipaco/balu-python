@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 import copy
-from Bcl_construct import Bcl_construct
+from .Bcl_construct import Bcl_construct
 
 
 def Bcl_structure(*args):

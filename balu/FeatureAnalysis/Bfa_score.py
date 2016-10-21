@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import numpy as np
-from Bfa_mutualinfo import Bfa_mutualinfo
-from Bfa_relevance import Bfa_relevance
-from Bfa_mRMR import Bfa_mRMR
-from Bfa_jfisher import Bfa_jfisher
-from Bfa_sp100 import Bfa_sp100
+from .Bfa_mutualinfo import Bfa_mutualinfo
+from .Bfa_relevance import Bfa_relevance
+from .Bfa_mRMR import Bfa_mRMR
+from .Bfa_jfisher import Bfa_jfisher
+from .Bfa_sp100 import Bfa_sp100
 from balu.PerformanceEvaluation import Bev_performance
 from balu.Classification import Bcl_structure
 

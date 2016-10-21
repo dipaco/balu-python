@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 from skimage.filters import threshold_otsu
-from Bim_morphoreg import Bim_morphoreg
-from Bim_maxmin import Bim_maxmin
+from .Bim_morphoreg import Bim_morphoreg
+from .Bim_maxmin import Bim_maxmin
 from skimage.color import rgb2gray
 
 

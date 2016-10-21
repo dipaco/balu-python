@@ -124,7 +124,7 @@ def Bfs_sfs(X, d, options={'show': True}, hold=False):
                 plt.title('Selected features')
                 plt.bar(np.arange(m) + 0.5, J)
 
-                print ', Jmax = {0:8.4f}\n'.format(Jmax)
+                print(', Jmax = {0:8.4f}\n'.format(Jmax))
                 for i in range(selec.size):
                     plt.text(i+0.4, J[i]*1.05, '{0}'.format(selec[i]))
 
@@ -132,10 +132,10 @@ def Bfs_sfs(X, d, options={'show': True}, hold=False):
                 plt.pause(0.001)
 
         else:
-            print 'Bfs_sfs: no more improvement. Sequential search for feature selection is interrupted.'
+            print('Bfs_sfs: no more improvement. Sequential search for feature selection is interrupted.')
             if force and k < m:
-               print 'Bfs_sfs: Warning! {0} random features were selected in order to have'.format(m-k)
-               print '                  {0} selected features (options.force is true).\n'.format(m)
+               print('Bfs_sfs: Warning! {0} random features were selected in order to have'.format(m-k))
+               print('                  {0} selected features (options.force is true).\n'.format(m))
                t = np.arange(N)
                t = np.delete(t, selec)
                n = t.size

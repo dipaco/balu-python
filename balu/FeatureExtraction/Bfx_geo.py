@@ -69,7 +69,7 @@ def Bfx_geo(R, options):
      Diego Patiño (dapatinoco@unal.edu.co) -> Translated implementation into python (2016)
     """
     if R.size == 0:
-        print 'Bfx_geo: R is empty. Geometric features without segmentation has no sense.'
+        print('Bfx_geo: R is empty. Geometric features without segmentation has no sense.')
         exit()
     else:
         b = options['b']
@@ -87,7 +87,7 @@ def Bfx_geo(R, options):
 
                 balu_module = __import__('balu')
                 if s not in dir(balu_module.FeatureExtraction):
-                    print 'Bfx_geo: function {0} does not exist.'.format(b[i]['name'])
+                    print('Bfx_geo: function {0} does not exist.'.format(b[i]['name']))
                     exit()
 
                 f = getattr(balu_module.FeatureExtraction, s)

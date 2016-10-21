@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import numpy as np
-from Bev_confusion import Bev_confusion
+from .Bev_confusion import Bev_confusion
 
 
 def Bev_performance(d1, d2, nn=None):
@@ -70,7 +70,7 @@ def Bev_performance(d1, d2, nn=None):
             p[i] = np.mean(pp)
 
     else:
-        print 'Bev_performance: at least d1 or d2 must have only one column'
+        print('Bev_performance: at least d1 or d2 must have only one column')
 
     if p.size == 1:
         return p[0, 0]

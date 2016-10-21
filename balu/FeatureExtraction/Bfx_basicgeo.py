@@ -48,7 +48,7 @@ def Bfx_basicgeo(R, *args):
     # Standard features
     # Perimeter
     if options['show']:
-        print '--- extracting standard geometric features...'
+        print('--- extracting standard geometric features...')
 
     L8 = perimeter(R.astype('uint8'), neighbourhood=8)
     L4 = perimeter(R.astype('uint8'), neighbourhood=4)

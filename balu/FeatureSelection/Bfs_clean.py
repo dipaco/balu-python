@@ -72,6 +72,6 @@ def Bfs_clean(X, show=False):
     fc = f[:, p]
     nc = fc.shape[1]
     if show:
-        print 'Bfs_clean: number of features reduced from {0} to {1}.\n'.format(nf, nc)
+        print('Bfs_clean: number of features reduced from {0} to {1}.\n'.format(nf, nc))
 
     return p

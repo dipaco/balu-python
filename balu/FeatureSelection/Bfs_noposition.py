@@ -41,7 +41,7 @@ def Bfs_noposition(f, fn):
      Diego Patiño (dapatinoco@unal.edu.co) -> Translated implementation into python (2016)
     """
 
-    ii = range(len(fn))
+    ii = list(range(len(fn)))
     s = ['center of grav i [px]   ',
          'center of grav j [px]   ',
          'Ellipse-centre i [px]   ',

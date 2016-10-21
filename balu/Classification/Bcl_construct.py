@@ -22,7 +22,7 @@ def Bcl_construct(args):
         X = args[0]
         d = args[1].astype(float)
         if X.shape[0] != d.shape[0]:
-            print 'Length of label vector does not match number of instances.'
+            print('Length of label vector does not match number of instances.')
             exit()
 
         Xt = np.array([])
@@ -33,7 +33,7 @@ def Bcl_construct(args):
         X = args[0]
         d = args[1].astype(float)
         if X.shape[0] != d.shape[0]:
-            print 'Length of label vector does not match number of instances.'
+            print('Length of label vector does not match number of instances.')
             exit()
 
         Xt = args[2]
@@ -41,7 +41,7 @@ def Bcl_construct(args):
         test = True
         train = True
     else:
-        print 'Bcl_construct: number of input arguments must be 2, 3 or 4.'
+        print('Bcl_construct: number of input arguments must be 2, 3 or 4.')
         exit()
 
     return train, test, X, d, Xt, options

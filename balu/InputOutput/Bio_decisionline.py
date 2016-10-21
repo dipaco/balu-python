@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 from matplotlib.pyplot import show, clf, gca, close, figure, title, scatter
-from Bio_plotfeatures import Bio_plotfeatures
+from .Bio_plotfeatures import Bio_plotfeatures
 from balu.Classification import Bcl_structure
 
 
@@ -49,7 +49,7 @@ def Bio_decisionline(X, d, Xn, op):
         d = np.expand_dims(d, axis=1)
 
     if X.shape[1] != 2:
-        print 'Bio_decisionline works for two features only.'
+        print('Bio_decisionline works for two features only.')
         exit()
 
     clf()

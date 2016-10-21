@@ -57,7 +57,7 @@ def Bfx_hugeo(R, options={}):
         options['show'] = False
 
     if options['show']:
-        print '--- extracting Hu moments...'
+        print('--- extracting Hu moments...')
 
     Ireg, Jreg = np.where(R.astype('uint8') == 1)         # pixels in the region
     Ireg = np.expand_dims(Ireg, axis=1)

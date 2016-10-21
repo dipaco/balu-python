@@ -93,7 +93,7 @@ def Bim_segmowgli(J, R=None, Amin=20, sig=2):
 
     F = label(np.logical_not(W), 4)
     m = int(F.max())
-    print '{0} segmented regions.\n'.format(m)
+    print('{0} segmented regions.\n'.format(m))
     return F, m
 
 def edge_LoG(I, sigma):

@@ -55,7 +55,7 @@ def Bfx_flusser(R, options={}):
         options['show'] = False
 
     if options['show']:
-        print '--- extracting Flusser moments...'
+        print('--- extracting Flusser moments...')
 
     Ireg, Jreg = np.where(R == 1)           # pixels in the region
 

@@ -59,7 +59,7 @@ def Bfx_fitellipse(R, options=None):
             options = {'show': False}
 
         if options['show']:
-            print '--- extracting ellipse features...'
+            print('--- extracting ellipse features...')
 
         # normalize data
         mx = np.mean(X)
@@ -117,7 +117,7 @@ def Bfx_fitellipse(R, options=None):
         X = np.array([[mc[0, 0], mc[1, 0], ae, be, alpha, ecc, ar]])
     else:
         X = np.array([[0., 0., 0., 0., 0., 0., 0.]])
-        print 'Warning: Bfx_fitellipse does not have enough points to fit'
+        print('Warning: Bfx_fitellipse does not have enough points to fit')
 
     Xn = [
         'Ellipse-centre i [px]   ',

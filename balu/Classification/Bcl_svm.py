@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import numpy as np
-from Bcl_construct import Bcl_construct
+from .Bcl_construct import Bcl_construct
 from sklearn import svm
 
 

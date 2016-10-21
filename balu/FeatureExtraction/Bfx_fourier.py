@@ -50,7 +50,7 @@ def Bfx_fourier(I, *args):
     M2 = np.round(M / 2.0)
 
     if 'show' in options and options['show'] is True:
-        print '--- extracting Fourier features...'
+        print('--- extracting Fourier features...')
 
     Im = imresize(I.astype(float), (N, M))
     FIm = np.fft.fft2(Im)

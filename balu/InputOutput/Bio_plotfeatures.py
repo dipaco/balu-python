@@ -72,7 +72,7 @@ def Bio_plotfeatures(X, d, Xn=[], hold=True):
         m = 1
 
     if m > 9:
-        print 'Bio_plotfeatures for {0} features makes {1} plots.'.format(m, m * m)
+        print('Bio_plotfeatures for {0} features makes {1} plots.'.format(m, m * m))
         exit()
 
     scflag = False

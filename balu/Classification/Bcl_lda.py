@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
-from Bcl_construct import Bcl_construct
-from Bcl_outscore import Bcl_outscore
+from .Bcl_construct import Bcl_construct
+from .Bcl_outscore import Bcl_outscore
 
 
 def Bcl_lda(*args):
@@ -110,7 +110,7 @@ def Bcl_lda(*args):
         for k in range(int(K)):
             ii, _ = np.where(d == k + 1)           # index of rows of class k
             if ii.size == 0:
-                print 'Bcl_lda: There is no class {0} in the data.'.format(k + dmin)
+                print('Bcl_lda: There is no class {0} in the data.'.format(k + dmin))
                 exit()
             L[k, 0] = ii.size                   # number of samples in class k
             Xk = X[ii, :]                       # samples of class k

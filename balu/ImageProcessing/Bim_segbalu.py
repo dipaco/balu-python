@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from skimage.filters import threshold_otsu
-from Bim_rgb2hcm import Bim_rgb2hcm
-from Bim_morphoreg import Bim_morphoreg
+from .Bim_rgb2hcm import Bim_rgb2hcm
+from .Bim_morphoreg import Bim_morphoreg
 
 
 def Bim_segbalu(I, p=-0.05):

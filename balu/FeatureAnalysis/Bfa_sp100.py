@@ -26,7 +26,7 @@ def Bfa_sp100(X, d):
 
     d = d - d.min()
     if d.max() > 1:
-        print 'Bfa_sp100 works for only two classes'
+        print('Bfa_sp100 works for only two classes')
         exit()
 
     d1, d2 = np.where(d == 1)
