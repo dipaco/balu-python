@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 import numpy as np
-from os import path
-from warnings import filterwarnings
 
 
 def Bfx_geo(R, options):
