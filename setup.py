@@ -4,7 +4,8 @@ from setuptools import setup, find_packages
 setup(
   name = 'balu',
   packages=find_packages(),
-  version = '0.1.13',
+  version = '0.1.14',
+  include_package_data=True,
   description = 'Python implementation of Balu Toolbox by Domingo Mery (http://dmery.ing.puc.cl/index.php/balu/)',
   author = 'Diego Patiño',
   author_email = 'dapatinoco@unal.edu.com',
