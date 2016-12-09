@@ -10,13 +10,13 @@ Python implementation of Balu Toolbox by Domingo Mery (http://dmery.ing.puc.cl/i
 
 ## Installation:
 ### Mac OS:
-1. Download and install `pip`:
+1. Download and install `pip` if you haven't:
 
  - curl https://bootstrap.pypa.io/ez_setup.py -o - | sudo python
     
  - sudo easy_install pip
     
-   We recommend to use a virtual environment to isolate the library from the system installed packages. Usually, if you use virtual environment step (1) is not required.
+   Usually, if you use virtual environment step (1) is not required.
     
 2. Install `balu-python` using pip:
     
@@ -24,4 +24,6 @@ Python implementation of Balu Toolbox by Domingo Mery (http://dmery.ing.puc.cl/i
  
 ### Linux:
     
-
+## NOTES:
+- We recommend to use a virtual environment to isolate the library from the system installed packages. 
+- If you use a virtual environment it is recommended to run in python the command `matplotlib.use('TkAgg')` before importing any function from matplotlib.pyplot.
