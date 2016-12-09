@@ -9,7 +9,7 @@ Python implementation of Balu Toolbox by Domingo Mery (http://dmery.ing.puc.cl/i
     
 - sudo easy_install pip
     
-We recommend to use a virtual environment to isolate the library from the system installed packages. Usually, if you use virtual environment step (1) is not required.
+  We recommend to use a virtual environment to isolate the library from the system installed packages. Usually, if you use virtual environment step (1) is not required.
     
 2. Install `balu-python` using pip:
     
