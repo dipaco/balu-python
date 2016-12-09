@@ -26,4 +26,4 @@ Python implementation of Balu Toolbox by Domingo Mery (http://dmery.ing.puc.cl/i
     
 ## NOTES:
 - We recommend to use a virtual environment to isolate the library from the system installed packages. 
-- If you use a virtual environment it is recommended to run in python the command `matplotlib.use('TkAgg')` before importing any function from matplotlib.pyplot.
+- If you use a virtual environment it is recommended to run in python the command `matplotlib.use('TkAgg')` before importing any function from matplotlib.pyplot. (See here)[http://matplotlib.org/faq/virtualenv_faq.html]
