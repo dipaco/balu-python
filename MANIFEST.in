@@ -1,0 +1,9 @@
+#documentation
+recursive-include balu/ *.py
+include balu/ImagesAndData/*.mat
+include balu/ImagesAndData/*.jpg
+include balu/ImagesAndData/*.tif
+include balu/ImagesAndData/*.png
+include balu/ImagesAndData/*.bmp
+include balu/ImagesAndData/*.txt
+
