@@ -59,7 +59,6 @@ def Bfx_haralick(I, R=None, options={}):
             options = {'dharalick': [1, 2, 3, 4, 5]}         #3 and 5 pixels distance for coocurrence
             I = balu_imageload('testimg1.jpg')      #input image
             R, _, _ = Bim_segbalu(I)                #segmentation
-            R = I[:, :, 1] > 128
             J = I[:, :, 1]                          #green channel
             X, Xn = Bfx_haralick(J, R, options)     #Haralick features
             Bio_printfeatures(X, Xn)
@@ -72,7 +71,6 @@ def Bfx_haralick(I, R=None, options={}):
      With collaboration from:
      Diego Patiño (dapatinoco@unal.edu.co) -> Translated implementation into python (2016)
     """
-
     I = I.astype(float)
 
     if R is None:
@@ -137,7 +135,7 @@ def Bcoocurrencematrix(I, R, Io, Jo):
      Diego Patiño (dapatinoco@unal.edu.co) -> Translated implementation into python (2016)
     """
 
-    V = np.floor(I / 32.0) + 1
+    V = np.floor(I / 32.0)
     N, M = I.shape
     Z1 = np.zeros((N+40, M+40))
     Z2 = Z1.copy()
@@ -167,7 +165,7 @@ def Bcoocurrencematrix(I, R, Io, Jo):
         i2 = np.insert(i1[1:], i1.size - 1, -1)
         d = i2 - i1
         for i in range(d.size - 1):
-            P[X[i1[i], 1] - 1, X[i1[i], 0] - 1] = d[i]
+            P[int(X[i1[i], 1]), int(X[i1[i], 0])] = d[i]
 
     else:
         P = -np.ones((8, 8))
@@ -275,12 +273,12 @@ def Bcoocurrencefeatures(P):
     # 12,13 Information Measures of Correlation
     HXY = f9
     pxipyj = pxi[i] * pyj[j]
-    HXY1 = np.dot(-Pij.T, np.log(pxipyj + 1e-20))
+    HXY1 = np.dot(-Pij.T, np.log(pxipyj + 1e-20))[0][0]
     HXY2 = np.dot(-pxipyj.T, np.log(pxipyj+1e-20))
-    HX = np.dot(-pxi.T, np.log(pxi + 1e-20))
-    HY = np.dot(-pyj.T, np.log(pyj + 1e-20))
-    f12 = ((HXY-HXY1) / np.max(HX, HY))[0][0]
-    f13 = (1 - np.exp(-2 * (HXY2-HXY)))[0][0]
+    HX = np.dot(-pxi.T, np.log(pxi + 1e-20))[0][0]
+    HY = np.dot(-pyj.T, np.log(pyj + 1e-20))[0][0]
+    f12 = ((HXY-HXY1) / max(HX, HY))
+    f13 = (1 - np.exp(-2 * (HXY2-HXY)))
 
     # 14 Maximal Corrleation Coefficient
     f14 = eigQ[1]

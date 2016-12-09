@@ -21,17 +21,19 @@ def Bds_nostratify(X, d, s):
      With collaboration from:
      Diego Patiño (dapatinoco@unal.edu.co) -> Translated implementation into python (2016)
      """
+    if len(d.shape) < 2:
+        d = d[:, None]
 
     N = X.shape[0]
     rn = np.random.rand(N)
     j = np.argsort(rn)
     Xr = X[j, :]
-    dr = d[j]
+    dr = d[j, 0]
     r = np.floor(s * N)
     R = np.array([[0, r], [r, N]]).astype(int)
     X1 = Xr[R[0, 0]:R[0, 1], :]
-    d1 = dr[R[0, 0]:R[0, 1], :]
+    d1 = dr[R[0, 0]:R[0, 1]]
     X2 = Xr[R[1, 0]:R[1, 1], :]
-    d2 = dr[R[1, 0]:R[1, 1], :]
+    d2 = dr[R[1, 0]:R[1, 1]]
 
     return X1, d1, X2, d2

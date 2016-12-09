@@ -41,7 +41,10 @@ def Bfs_clean(X, show=False):
 
     # eliminating correlated features
     warnings.filterwarnings('ignore')
-    C = np.abs(np.corrcoef(f, rowvar=0))
+    if f.shape[0] == 1:
+        return p
+    else:
+        C = np.abs(np.corrcoef(f, rowvar=0))
     ii, jj = np.where(C > 0.99)
 
     if ii.size > 0:

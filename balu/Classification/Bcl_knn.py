@@ -78,7 +78,10 @@ def Bcl_knn(*args):
     if train:
         options['kdtree'] = KDTree(X, metric='euclidean')
         #options['X'] = X
-        options['d'] = d
+        if len(d.shape) < 2:
+            options['d'] = d[:, None]
+        else:
+            options['d'] = d
         output = options
 
     if test:
