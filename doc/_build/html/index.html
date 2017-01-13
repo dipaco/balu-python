@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Welcome to Balu’s documentation! &#8212; balu 1.0.14 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.14',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="balu package" href="rst/balu.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="rst/balu.html" title="balu package"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">balu 1.0.14 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-balu-s-documentation">
+<h1>Welcome to Balu&#8217;s documentation!<a class="headerlink" href="#welcome-to-balu-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Balu-python implementation of Balu Toolbox by Domingo Mery (<a class="reference external" href="http://dmery.ing.puc.cl/index.php/balu/">http://dmery.ing.puc.cl/index.php/balu/</a>) in python programming
+language.</p>
+<p>Every Balu function has its own documentation with description and examples. Just use the function &#8220;&#8221;help&#8221;&#8221; in python
+to get a description of how the balu command works:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="kn">from</span> <span class="nn">balu.Classification</span> <span class="k">import</span> <span class="n">Bcl_svm</span>
+<span class="o">&gt;&gt;</span> <span class="n">help</span><span class="p">(</span><span class="n">Bcl_svm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>numpy &gt;= 1.11.2</li>
+<li>scipy &gt;= 0.18.1</li>
+<li>matplotlib &gt;= 1.5.2</li>
+<li>scikit-image &gt;= 0.12.3</li>
+<li>scikit-learn &gt;= 0.18</li>
+</ul>
+</div>
+<div class="section" id="mac-os">
+<h2>Mac OS<a class="headerlink" href="#mac-os" title="Permalink to this headline">¶</a></h2>
+<p>Download and install pip if you haven&#8217;t:</p>
+<ul class="simple">
+<li>curl <a class="reference external" href="https://bootstrap.pypa.io/ez_setup.py">https://bootstrap.pypa.io/ez_setup.py</a> -o - | sudo python</li>
+<li>sudo easy_install pip</li>
+</ul>
+<p>Usually, if you use virtual environment step (1) is not required.</p>
+<p>Install balu-python using pip:</p>
+<ul class="simple">
+<li>pip install balu</li>
+</ul>
+</div>
+<div class="section" id="linux">
+<h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="notes">
+<h2>NOTES<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<p>We recommend to use a virtual environment to isolate the library from the system installed packages.
+If you use a virtual environment it is recommended to run in python the command matplotlib.use(&#8216;TkAgg&#8217;) before importing any function from matplotlib.pyplot. See here</p>
+</div>
+</div>
+<div class="section" id="package-structure">
+<h1>Package structure<a class="headerlink" href="#package-structure" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="rst/balu.html">balu package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rst/balu.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rst/balu.Classification.html">balu.Classification package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rst/balu.DataSelectionAndGeneration.html">balu.DataSelectionAndGeneration package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rst/balu.FeatureAnalysis.html">balu.FeatureAnalysis package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rst/balu.FeatureExtraction.html">balu.FeatureExtraction package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rst/balu.FeatureSelection.html">balu.FeatureSelection package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rst/balu.FeatureTransformation.html">balu.FeatureTransformation package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rst/balu.ImageProcessing.html">balu.ImageProcessing package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rst/balu.ImagesAndData.html">balu.ImagesAndData package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rst/balu.InputOutput.html">balu.InputOutput package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rst/balu.PerformanceEvaluation.html">balu.PerformanceEvaluation package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rst/balu.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to Balu&#8217;s documentation!</a></li>
+<li><a class="reference internal" href="#installation">Installation</a><ul>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#mac-os">Mac OS</a></li>
+<li><a class="reference internal" href="#linux">Linux</a></li>
+<li><a class="reference internal" href="#notes">NOTES</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#package-structure">Package structure</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="rst/balu.html"
+                        title="next chapter">balu package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="rst/balu.html" title="balu package"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">balu 1.0.14 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Diego Patiño.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

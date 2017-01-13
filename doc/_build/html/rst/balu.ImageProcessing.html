@@ -1,0 +1,570 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>balu.ImageProcessing package &#8212; balu 1.0.14 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.14',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">balu 1.0.14 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="balu-imageprocessing-package">
+<h1>balu.ImageProcessing package<a class="headerlink" href="#balu-imageprocessing-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-balu.ImageProcessing.Bim_maxmin">
+<span id="balu-imageprocessing-bim-maxmin-module"></span><h2>balu.ImageProcessing.Bim_maxmin module<a class="headerlink" href="#module-balu.ImageProcessing.Bim_maxmin" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.ImageProcessing.Bim_maxmin.Bim_maxmin">
+<code class="descclassname">balu.ImageProcessing.Bim_maxmin.</code><code class="descname">Bim_maxmin</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.ImageProcessing.Bim_maxmin.Bim_maxmin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-balu.ImageProcessing.Bim_morphoreg">
+<span id="balu-imageprocessing-bim-morphoreg-module"></span><h2>balu.ImageProcessing.Bim_morphoreg module<a class="headerlink" href="#module-balu.ImageProcessing.Bim_morphoreg" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.ImageProcessing.Bim_morphoreg.Bim_morphoreg">
+<code class="descclassname">balu.ImageProcessing.Bim_morphoreg.</code><code class="descname">Bim_morphoreg</code><span class="sig-paren">(</span><em>J</em>, <em>t=None</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.ImageProcessing.Bim_morphoreg.Bim_morphoreg" title="Permalink to this definition">¶</a></dt>
+<dd><p>R, E = Bmorphoreg(J, t)
+R, E = Bmorphoreg(Ro)</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><blockquote class="first">
+<div>Morphology operations of binary image J&gt;t (or Ro): remove isolate
+pixels and fill holes.
+R: binary image of the region
+E: binary image of the edge</div></blockquote>
+<dl class="last docutils">
+<dt>Example:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_imageload
+from matplotlib.pyplot import figure, imshow, show
+from skimage.color import rgb2gray
+from balu.ImageProcessing import Bim_morphoreg, Bim_segotsu</p>
+<p class="last">I = balu_imageload(&#8216;testimg2.jpg&#8217;)
+figure(1), imshow(I)
+J = rgb2gray(I.astype(float))
+Ro, E, J = Bim_segotsu(J)
+figure(2), imshow(Ro, cmap=&#8217;gray&#8217;)
+R, E = Bim_morphoreg(Ro)
+figure(3), imshow(R, cmap=&#8217;gray&#8217;)
+show()</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>D.Mery, PUC-DCC, Apr. 2008
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.ImageProcessing.Bim_rgb2hcm">
+<span id="balu-imageprocessing-bim-rgb2hcm-module"></span><h2>balu.ImageProcessing.Bim_rgb2hcm module<a class="headerlink" href="#module-balu.ImageProcessing.Bim_rgb2hcm" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.ImageProcessing.Bim_rgb2hcm.Bim_rgb2hcm">
+<code class="descclassname">balu.ImageProcessing.Bim_rgb2hcm.</code><code class="descname">Bim_rgb2hcm</code><span class="sig-paren">(</span><em>RGB</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.ImageProcessing.Bim_rgb2hcm.Bim_rgb2hcm" title="Permalink to this definition">¶</a></dt>
+<dd><p>J = Bim_rgb2hcm(RGB)</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><blockquote class="first">
+<div><p>Conversion RGB to high contrast image.</p>
+<p>RGB: color image
+J  : hcm image</p>
+</div></blockquote>
+<p>See details in:
+Mery, D.; Pedreschi, F. (2005): Segmentation of Colour Food Images using
+a Robust Algorithm. Journal of Food Engineering 66(3): 353-360.</p>
+<dl class="last docutils">
+<dt>Example:</dt>
+<dd>I = imread(&#8216;testimg2.jpg&#8217;);
+J = Bim_rgb2hcm(I);
+figure(1)
+imshow(I); title(&#8216;control image&#8217;)
+figure(2)
+imshow(J); title(&#8216;high contrast image&#8217;)</dd>
+</dl>
+</dd>
+</dl>
+<p>(c) D.Mery, PUC-DCC, 2011
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.ImageProcessing.Bim_rgb2hcm.Bstdmono">
+<code class="descclassname">balu.ImageProcessing.Bim_rgb2hcm.</code><code class="descname">Bstdmono</code><span class="sig-paren">(</span><em>k</em>, <em>RGB</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.ImageProcessing.Bim_rgb2hcm.Bstdmono" title="Permalink to this definition">¶</a></dt>
+<dd><p>s = Bstdmono(k, RGB)</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">Standard deviation of normalized image I, where
+I = k(1)*R+k(2)*G+B (R = RGB(:,:,1), G=RGB(:,:,2), B = RGB(:,:,3)
+s: Standard deviation</p>
+<p class="last">This function is called by Brgb2hcm, Bsegbalu.</p>
+</dd>
+</dl>
+<p>See also Brgb2hcm, Bsegbalu.</p>
+<p>D.Mery, PUC-DCC, Apr. 2008
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.ImageProcessing.Bim_segbalu">
+<span id="balu-imageprocessing-bim-segbalu-module"></span><h2>balu.ImageProcessing.Bim_segbalu module<a class="headerlink" href="#module-balu.ImageProcessing.Bim_segbalu" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.ImageProcessing.Bim_segbalu.Bim_segbalu">
+<code class="descclassname">balu.ImageProcessing.Bim_segbalu.</code><code class="descname">Bim_segbalu</code><span class="sig-paren">(</span><em>I</em>, <em>p=-0.05</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.ImageProcessing.Bim_segbalu.Bim_segbalu" title="Permalink to this definition">¶</a></dt>
+<dd><p>R, E, J = Bim_segbalu(I, p)</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">Segmentation of an object with homogeneous background.</p>
+<p>I: input image
+p: threshold (default: p=-0.05) with p between -1 and 1.</p>
+<blockquote>
+<div>A positive value is used to dilate the segmentation,
+the negative to erode.</div></blockquote>
+<p>R: binary image of the object
+E: binary image of the edge of the object
+J: high contrast image of I.</p>
+<p>See details in:
+Mery, D.; Pedreschi, F. (2005): Segmentation of Colour Food Images using
+a Robust Algorithm. Journal of Food Engineering 66(3): 353-360.</p>
+<dl class="last docutils">
+<dt>Example:</dt>
+<dd><blockquote class="first">
+<div><p>from balu.ImagesAndData import balu_imageload
+from balu.ImageProcessing import Bim_segbalu
+from matplotlib.pyplot import figure, imshow, title, show</p>
+<p>I = balu_imageload(&#8216;testimg1.jpg&#8217;)
+R, E, J = Bim_segbalu(I)
+figure(1)
+imshow(I), title(&#8216;test image&#8217;)
+figure(2)
+imshow(R, cmap=&#8217;gray&#8217;), title(&#8216;segmented image&#8217;)
+show()</p>
+</div></blockquote>
+<p class="last">Repeat this examples for images testimg2, testimg3 and testimg4. Last
+test image requires R = Bim_segbalu(I,-0.1) for better results.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>See also Bim_segmowgli, Bim_segotsu, Bim_segkmeans, Bio_segshow.</p>
+<p>D.Mery, PUC-DCC, Apr. 2008-2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.ImageProcessing.Bim_segmowgli">
+<span id="balu-imageprocessing-bim-segmowgli-module"></span><h2>balu.ImageProcessing.Bim_segmowgli module<a class="headerlink" href="#module-balu.ImageProcessing.Bim_segmowgli" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.ImageProcessing.Bim_segmowgli.Bim_segmowgli">
+<code class="descclassname">balu.ImageProcessing.Bim_segmowgli.</code><code class="descname">Bim_segmowgli</code><span class="sig-paren">(</span><em>J</em>, <em>R=None</em>, <em>Amin=20</em>, <em>sig=2</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.ImageProcessing.Bim_segmowgli.Bim_segmowgli" title="Permalink to this definition">¶</a></dt>
+<dd><p>F, m = Bsegmowgli(J, R, Amin, sig)</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">Segmentation of regions in image J using LoG edge detection.
+R   : binary image of same size of J that indicates the piexels where</p>
+<blockquote>
+<div>the segmentation will be performed. Default R = ones(size(J));</div></blockquote>
+<p>Amin: minimum area of the segmented details.
+sig : sigma of LoG edge detector.
+F   : labeled image of the segmentation.
+m   : numbers of segmented regions.</p>
+<dl class="last docutils">
+<dt>Example 1:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_imageload
+from balu.ImageProcessing import Bim_segmowgli
+from matplotlib.pyplot import figure, imshow, show, title</p>
+<p class="last">I = balu_imageload(&#8216;rice.png&#8217;)
+figure(1), imshow(I, cmap=&#8217;gray&#8217;), title(&#8216;test image&#8217;)
+F, m = Bim_segmowgli(I, R=None, Amin=40, sig=1.5)
+figure(2), imshow(F, cmap=&#8217;gray&#8217;), title(&#8216;segmented image&#8217;)
+show()</p>
+</dd>
+<dt>Example 2:</dt>
+<dd><blockquote class="first">
+<div><p>from balu.ImagesAndData import balu_imageload
+from balu.ImageProcessing import Bim_segmowgli, Bim_segbalu
+from matplotlib.pyplot import figure, imshow, show, title</p>
+<p>I = balu_imageload(&#8216;testimg4.jpg&#8217;)
+figure(1), imshow(I), title(&#8216;test image&#8217;)
+R, E, J = Bim_segbalu(I, -0.1)
+figure(2), imshow(R, cmap=&#8217;gray&#8217;), title(&#8216;segmented object&#8217;)
+G = I[:, :, 1]
+F, m = Bim_segmowgli(G, R=R, Amin=30, sig=2)
+figure(3), imshow(F), title(&#8216;segmented regions&#8217;)
+show()</p>
+</div></blockquote>
+<dl class="last docutils">
+<dt>Another way to display the results:</dt>
+<dd>Bio_edgeview(I,F&gt;0)</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>See also Bsegbalu.</p>
+<p>D.Mery, PUC-DCC, Apr. 2008
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.ImageProcessing.Bim_segmowgli.edge_LoG">
+<code class="descclassname">balu.ImageProcessing.Bim_segmowgli.</code><code class="descname">edge_LoG</code><span class="sig-paren">(</span><em>I</em>, <em>sigma</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.ImageProcessing.Bim_segmowgli.edge_LoG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-balu.ImageProcessing.Bim_segotsu">
+<span id="balu-imageprocessing-bim-segotsu-module"></span><h2>balu.ImageProcessing.Bim_segotsu module<a class="headerlink" href="#module-balu.ImageProcessing.Bim_segotsu" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.ImageProcessing.Bim_segotsu.Bim_segotsu">
+<code class="descclassname">balu.ImageProcessing.Bim_segotsu.</code><code class="descname">Bim_segotsu</code><span class="sig-paren">(</span><em>I</em>, <em>p=0</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.ImageProcessing.Bim_segotsu.Bim_segotsu" title="Permalink to this definition">¶</a></dt>
+<dd><p>R = Bim_segotsu(I)</p>
+<p>Toolbox: Balu</p>
+<blockquote>
+<div><blockquote>
+<div><p>Otsu segmentation of a grayvalue. This function requires Image
+Processing Toolbox.</p>
+<dl class="docutils">
+<dt>Input data:</dt>
+<dd>I grayvalue image.</dd>
+<dt>Output:</dt>
+<dd>R: binary image.</dd>
+<dt>Example: Training &amp; Test together:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_imageload
+from matplotlib.pyplot import figure, imshow, show, title
+from balu.ImageProcessing import Bim_segotsu</p>
+<p class="last">X = balu_imageload(&#8216;testimg1.jpg&#8217;)
+figure(1), imshow(X), title(&#8216;original image&#8217;)
+R, E, J = Bim_segotsu(X)
+figure(2)
+imshow(R, cmap=&#8217;gray&#8217;)
+title(&#8216;segmented image&#8217;)
+show()</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>See also Bim_segbalu, Bim_segkmeans.</p>
+</div></blockquote>
+<p>(c) D.Mery, PUC-DCC, 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.ImageProcessing">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-balu.ImageProcessing" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.ImageProcessing.Bim_segbalu">
+<code class="descclassname">balu.ImageProcessing.</code><code class="descname">Bim_segbalu</code><span class="sig-paren">(</span><em>I</em>, <em>p=-0.05</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.ImageProcessing.Bim_segbalu" title="Permalink to this definition">¶</a></dt>
+<dd><p>R, E, J = Bim_segbalu(I, p)</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">Segmentation of an object with homogeneous background.</p>
+<p>I: input image
+p: threshold (default: p=-0.05) with p between -1 and 1.</p>
+<blockquote>
+<div>A positive value is used to dilate the segmentation,
+the negative to erode.</div></blockquote>
+<p>R: binary image of the object
+E: binary image of the edge of the object
+J: high contrast image of I.</p>
+<p>See details in:
+Mery, D.; Pedreschi, F. (2005): Segmentation of Colour Food Images using
+a Robust Algorithm. Journal of Food Engineering 66(3): 353-360.</p>
+<dl class="last docutils">
+<dt>Example:</dt>
+<dd><blockquote class="first">
+<div><p>from balu.ImagesAndData import balu_imageload
+from balu.ImageProcessing import Bim_segbalu
+from matplotlib.pyplot import figure, imshow, title, show</p>
+<p>I = balu_imageload(&#8216;testimg1.jpg&#8217;)
+R, E, J = Bim_segbalu(I)
+figure(1)
+imshow(I), title(&#8216;test image&#8217;)
+figure(2)
+imshow(R, cmap=&#8217;gray&#8217;), title(&#8216;segmented image&#8217;)
+show()</p>
+</div></blockquote>
+<p class="last">Repeat this examples for images testimg2, testimg3 and testimg4. Last
+test image requires R = Bim_segbalu(I,-0.1) for better results.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>See also Bim_segmowgli, Bim_segotsu, Bim_segkmeans, Bio_segshow.</p>
+<p>D.Mery, PUC-DCC, Apr. 2008-2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.ImageProcessing.Bim_segmowgli">
+<code class="descclassname">balu.ImageProcessing.</code><code class="descname">Bim_segmowgli</code><span class="sig-paren">(</span><em>J</em>, <em>R=None</em>, <em>Amin=20</em>, <em>sig=2</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.ImageProcessing.Bim_segmowgli" title="Permalink to this definition">¶</a></dt>
+<dd><p>F, m = Bsegmowgli(J, R, Amin, sig)</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">Segmentation of regions in image J using LoG edge detection.
+R   : binary image of same size of J that indicates the piexels where</p>
+<blockquote>
+<div>the segmentation will be performed. Default R = ones(size(J));</div></blockquote>
+<p>Amin: minimum area of the segmented details.
+sig : sigma of LoG edge detector.
+F   : labeled image of the segmentation.
+m   : numbers of segmented regions.</p>
+<dl class="last docutils">
+<dt>Example 1:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_imageload
+from balu.ImageProcessing import Bim_segmowgli
+from matplotlib.pyplot import figure, imshow, show, title</p>
+<p class="last">I = balu_imageload(&#8216;rice.png&#8217;)
+figure(1), imshow(I, cmap=&#8217;gray&#8217;), title(&#8216;test image&#8217;)
+F, m = Bim_segmowgli(I, R=None, Amin=40, sig=1.5)
+figure(2), imshow(F, cmap=&#8217;gray&#8217;), title(&#8216;segmented image&#8217;)
+show()</p>
+</dd>
+<dt>Example 2:</dt>
+<dd><blockquote class="first">
+<div><p>from balu.ImagesAndData import balu_imageload
+from balu.ImageProcessing import Bim_segmowgli, Bim_segbalu
+from matplotlib.pyplot import figure, imshow, show, title</p>
+<p>I = balu_imageload(&#8216;testimg4.jpg&#8217;)
+figure(1), imshow(I), title(&#8216;test image&#8217;)
+R, E, J = Bim_segbalu(I, -0.1)
+figure(2), imshow(R, cmap=&#8217;gray&#8217;), title(&#8216;segmented object&#8217;)
+G = I[:, :, 1]
+F, m = Bim_segmowgli(G, R=R, Amin=30, sig=2)
+figure(3), imshow(F), title(&#8216;segmented regions&#8217;)
+show()</p>
+</div></blockquote>
+<dl class="last docutils">
+<dt>Another way to display the results:</dt>
+<dd>Bio_edgeview(I,F&gt;0)</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>See also Bsegbalu.</p>
+<p>D.Mery, PUC-DCC, Apr. 2008
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.ImageProcessing.Bim_rgb2hcm">
+<code class="descclassname">balu.ImageProcessing.</code><code class="descname">Bim_rgb2hcm</code><span class="sig-paren">(</span><em>RGB</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.ImageProcessing.Bim_rgb2hcm" title="Permalink to this definition">¶</a></dt>
+<dd><p>J = Bim_rgb2hcm(RGB)</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><blockquote class="first">
+<div><p>Conversion RGB to high contrast image.</p>
+<p>RGB: color image
+J  : hcm image</p>
+</div></blockquote>
+<p>See details in:
+Mery, D.; Pedreschi, F. (2005): Segmentation of Colour Food Images using
+a Robust Algorithm. Journal of Food Engineering 66(3): 353-360.</p>
+<dl class="last docutils">
+<dt>Example:</dt>
+<dd>I = imread(&#8216;testimg2.jpg&#8217;);
+J = Bim_rgb2hcm(I);
+figure(1)
+imshow(I); title(&#8216;control image&#8217;)
+figure(2)
+imshow(J); title(&#8216;high contrast image&#8217;)</dd>
+</dl>
+</dd>
+</dl>
+<p>(c) D.Mery, PUC-DCC, 2011
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.ImageProcessing.Bim_morphoreg">
+<code class="descclassname">balu.ImageProcessing.</code><code class="descname">Bim_morphoreg</code><span class="sig-paren">(</span><em>J</em>, <em>t=None</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.ImageProcessing.Bim_morphoreg" title="Permalink to this definition">¶</a></dt>
+<dd><p>R, E = Bmorphoreg(J, t)
+R, E = Bmorphoreg(Ro)</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><blockquote class="first">
+<div>Morphology operations of binary image J&gt;t (or Ro): remove isolate
+pixels and fill holes.
+R: binary image of the region
+E: binary image of the edge</div></blockquote>
+<dl class="last docutils">
+<dt>Example:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_imageload
+from matplotlib.pyplot import figure, imshow, show
+from skimage.color import rgb2gray
+from balu.ImageProcessing import Bim_morphoreg, Bim_segotsu</p>
+<p class="last">I = balu_imageload(&#8216;testimg2.jpg&#8217;)
+figure(1), imshow(I)
+J = rgb2gray(I.astype(float))
+Ro, E, J = Bim_segotsu(J)
+figure(2), imshow(Ro, cmap=&#8217;gray&#8217;)
+R, E = Bim_morphoreg(Ro)
+figure(3), imshow(R, cmap=&#8217;gray&#8217;)
+show()</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>D.Mery, PUC-DCC, Apr. 2008
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.ImageProcessing.Bim_segotsu">
+<code class="descclassname">balu.ImageProcessing.</code><code class="descname">Bim_segotsu</code><span class="sig-paren">(</span><em>I</em>, <em>p=0</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.ImageProcessing.Bim_segotsu" title="Permalink to this definition">¶</a></dt>
+<dd><p>R = Bim_segotsu(I)</p>
+<p>Toolbox: Balu</p>
+<blockquote>
+<div><blockquote>
+<div><p>Otsu segmentation of a grayvalue. This function requires Image
+Processing Toolbox.</p>
+<dl class="docutils">
+<dt>Input data:</dt>
+<dd>I grayvalue image.</dd>
+<dt>Output:</dt>
+<dd>R: binary image.</dd>
+<dt>Example: Training &amp; Test together:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_imageload
+from matplotlib.pyplot import figure, imshow, show, title
+from balu.ImageProcessing import Bim_segotsu</p>
+<p class="last">X = balu_imageload(&#8216;testimg1.jpg&#8217;)
+figure(1), imshow(X), title(&#8216;original image&#8217;)
+R, E, J = Bim_segotsu(X)
+figure(2)
+imshow(R, cmap=&#8217;gray&#8217;)
+title(&#8216;segmented image&#8217;)
+show()</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>See also Bim_segbalu, Bim_segkmeans.</p>
+</div></blockquote>
+<p>(c) D.Mery, PUC-DCC, 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.ImageProcessing.Bim_maxmin">
+<code class="descclassname">balu.ImageProcessing.</code><code class="descname">Bim_maxmin</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.ImageProcessing.Bim_maxmin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">balu.ImageProcessing package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-balu.ImageProcessing.Bim_maxmin">balu.ImageProcessing.Bim_maxmin module</a></li>
+<li><a class="reference internal" href="#module-balu.ImageProcessing.Bim_morphoreg">balu.ImageProcessing.Bim_morphoreg module</a></li>
+<li><a class="reference internal" href="#module-balu.ImageProcessing.Bim_rgb2hcm">balu.ImageProcessing.Bim_rgb2hcm module</a></li>
+<li><a class="reference internal" href="#module-balu.ImageProcessing.Bim_segbalu">balu.ImageProcessing.Bim_segbalu module</a></li>
+<li><a class="reference internal" href="#module-balu.ImageProcessing.Bim_segmowgli">balu.ImageProcessing.Bim_segmowgli module</a></li>
+<li><a class="reference internal" href="#module-balu.ImageProcessing.Bim_segotsu">balu.ImageProcessing.Bim_segotsu module</a></li>
+<li><a class="reference internal" href="#module-balu.ImageProcessing">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/rst/balu.ImageProcessing.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">balu 1.0.14 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Diego Patiño.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

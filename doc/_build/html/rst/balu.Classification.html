@@ -1,0 +1,1348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>balu.Classification package &#8212; balu 1.0.14 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.14',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">balu 1.0.14 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="balu-classification-package">
+<h1>balu.Classification package<a class="headerlink" href="#balu-classification-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-balu.Classification.Bcl_construct">
+<span id="balu-classification-bcl-construct-module"></span><h2>balu.Classification.Bcl_construct module<a class="headerlink" href="#module-balu.Classification.Bcl_construct" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.Classification.Bcl_construct.Bcl_construct">
+<code class="descclassname">balu.Classification.Bcl_construct.</code><code class="descname">Bcl_construct</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_construct.Bcl_construct" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is not a classifier!!!
+This function is called by Balu classifier functions (such as Bcl_lda) to
+build the training and testing data.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.Classification.Bcl_dmin">
+<span id="balu-classification-bcl-dmin-module"></span><h2>balu.Classification.Bcl_dmin module<a class="headerlink" href="#module-balu.Classification.Bcl_dmin" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.Classification.Bcl_dmin.Bcl_dmin">
+<code class="descclassname">balu.Classification.Bcl_dmin.</code><code class="descname">Bcl_dmin</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_dmin.Bcl_dmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>ds, options = Bcl_dmin(X, d, Xt, None)  Training &amp; Testing together
+options = Bcl_dmin(X, d, None)     Training only
+ds      = Bcl_dmin(Xt, options) Testing only</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">Classifier using Euclidean minimal distance</p>
+<dl class="docutils">
+<dt>Design data:</dt>
+<dd>X is a matrix with features (columns)
+d is the ideal classification for X</dd>
+<dt>Test data:</dt>
+<dd>Xt is a matrix with features (columns)</dd>
+<dt>Output:</dt>
+<dd>ds is the classification on test data
+options[&#8216;mc&#8217;] contains the centroids of each class.
+options[´dmin&#8217;] contains np.min(d).
+options[&#8216;string&#8217;] is a 8 character string that describes the performed
+classification (in this case &#8216;dmin    &#8216;).</dd>
+<dt>Example: Training &amp; Test together:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_dmin
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+ds, _ = Bcl_dmin(X, d, Xt, None)        # Euclidean distance classifier
+p = Bev_performance(ds, dt)             # performance on test data</p>
+</dd>
+<dt>Example: Training only</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_dmin</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = Bcl_dmin(X, d, None)               # Euclidean distance classifier</p>
+</dd>
+<dt>Example: Testing only (after training only example):</dt>
+<dd>ds, _ = Bcl_dmin(Xt, op)                   # Euclidean distance classifier - testing
+p = Bev_performance(ds, dt)             # performance on test data</dd>
+</dl>
+<p class="last">See also Bcl_maha.</p>
+</dd>
+</dl>
+<p>D.Mery, PUC-DCC, May 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.Classification.Bcl_knn">
+<span id="balu-classification-bcl-knn-module"></span><h2>balu.Classification.Bcl_knn module<a class="headerlink" href="#module-balu.Classification.Bcl_knn" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.Classification.Bcl_knn.Bcl_knn">
+<code class="descclassname">balu.Classification.Bcl_knn.</code><code class="descname">Bcl_knn</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_knn.Bcl_knn" title="Permalink to this definition">¶</a></dt>
+<dd><p>ds, options = Bcl_knn(X, d, Xt, options)  Training &amp; Testing together
+options = Bcl_knn(X, d, options)     Training only
+ds, _ = Bcl_knn(Xt, options)      Testing only</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">KNN (k-nearest neighbors) classifier using randomized kd-tree
+forest from FLANN. This implementation requires scikit-learn.</p>
+<dl class="last docutils">
+<dt>Design data:</dt>
+<dd>X is a matrix with features (columns)
+d is the ideal classification for X
+options.k is the number of neighbors (default=10)</dd>
+<dt>Test data:</dt>
+<dd>Xt is a matrix with features (columns)</dd>
+<dt>Output:</dt>
+<dd>ds is the classification on test data
+options[&#8216;kdtree&#8217;] contains information about the randomized kdtree
+(from KDTree function of scikit-learn).
+options[&#8216;string&#8217;] is a 8 character string that describes the performed
+classification (e.g., &#8216;knn,10  &#8216; means knn with k=10).</dd>
+<dt>Example: Training &amp; Test together:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_knn
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;k&#8217;: 10}
+ds, _ = Bcl_knn(X, d, Xt, op)           # knn with 10 neighbors
+p = Bev_performance(ds, dt)             # performance on test data
+print p</p>
+</dd>
+<dt>Example: Training only</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_knn</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;k&#8217;: 10}
+op = Bcl_knn(X, d, op)                  # knn with 10 neighbors</p>
+</dd>
+<dt>Example: Testing only (after training only example):</dt>
+<dd>ds, _ = Bcl_knn(Xt, op)                 # knn with 10 neighbors - testing
+p = Bev_performance(ds, dt)             # performance on test data</dd>
+</dl>
+</dd>
+</dl>
+<p>D.Mery, C. Mena PUC-DCC, 2010-2013
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.Classification.Bcl_lda">
+<span id="balu-classification-bcl-lda-module"></span><h2>balu.Classification.Bcl_lda module<a class="headerlink" href="#module-balu.Classification.Bcl_lda" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.Classification.Bcl_lda.Bcl_lda">
+<code class="descclassname">balu.Classification.Bcl_lda.</code><code class="descname">Bcl_lda</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_lda.Bcl_lda" title="Permalink to this definition">¶</a></dt>
+<dd><p>ds, options = Bcl_lda(X,d,Xt,[])  Training &amp; Testing together
+options = Bcl_lda(X,d,[])     Training only
+ds, options = Bcl_lda(Xt,options) Testing only</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">LDA (linear discriminant analysis) classifier.
+We assume that the classes have a common covariance matrix</p>
+<dl class="docutils">
+<dt>Design data:</dt>
+<dd>X is a matrix with features (columns)
+d is the ideal classification for X
+options.p is the prior probability, if p is empty,
+it will be estimated proportional to the number of samples of each
+class.</dd>
+<dt>Test data:</dt>
+<dd>Xt is a matrix with features (columns)</dd>
+<dt>Output:</dt>
+<dd>ds is the classification on test data
+options[&#8216;dmin&#8217;] contains np.min(d).
+options[&#8216;Cw1&#8217;] is pinv(within-class covariance).
+options[&#8216;mc&#8217;] contains the centroids of each class.
+options[&#8216;string&#8217;] is a 8 character string that describes the performed
+classification (in this case &#8216;lda     &#8216;).</dd>
+<dt>Reference:</dt>
+<dd>Hastie, T.; Tibshirani, R.; Friedman, J. (2001): The Elements of
+Statistical Learning, Springer (pages 84-90)</dd>
+</dl>
+<p>Example: Training &amp; Test together:</p>
+<blockquote>
+<div><p>from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_lda
+from balu.InputOutput import Bio_plotfeatures
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p>data = balu_load(&#8216;datagauss&#8217;)           #simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+d = data[&#8216;d&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;p&#8217;: []}
+ds, options = Bcl_lda(X, d, Xt, op)     # LDA classifier
+p = Bev_performance(ds, dt)             # performance on test data
+print p</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>Example: Training only</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_lda
+from balu.InputOutput import Bio_plotfeatures</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           #simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+d = data[&#8216;d&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;p&#8217;: [0.75, 0.25]}                # prior probability for each class
+op = Bcl_lda(X,d,op);                   # LDA - training</p>
+</dd>
+<dt>Example: Testing only (after training only example):</dt>
+<dd><p class="first">from balu.Classification import Bcl_lda</p>
+<p class="last">ds, _ = Bcl_lda(Xt, op)                 # LDA - testing
+p = Bev_performance(ds, dt)             # performance on test data</p>
+</dd>
+</dl>
+<p class="last">See also Bcl_qda.</p>
+</dd>
+</dl>
+<p>(c) GRIMA-DCCUC, 2011
+<a class="reference external" href="http://grima.ing.puc.cl">http://grima.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.Classification.Bcl_maha">
+<span id="balu-classification-bcl-maha-module"></span><h2>balu.Classification.Bcl_maha module<a class="headerlink" href="#module-balu.Classification.Bcl_maha" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.Classification.Bcl_maha.Bcl_maha">
+<code class="descclassname">balu.Classification.Bcl_maha.</code><code class="descname">Bcl_maha</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_maha.Bcl_maha" title="Permalink to this definition">¶</a></dt>
+<dd><p>ds, options = Bcl_maha(X, d, Xt, None)  Training &amp; Testing together
+options = Bcl_maha(X, d, None)     Training only
+ds, options = Bcl_maha(Xt, options) Testing only</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">Classifier using Mahalanobis minimal distance</p>
+<dl class="docutils">
+<dt>Design data:</dt>
+<dd>X is a matrix with features (columns)
+d is the ideal classification for X</dd>
+<dt>Test data:</dt>
+<dd>Xt is a matrix with features (columns)</dd>
+<dt>Output:</dt>
+<dd>ds is the classification on test data
+options[&#8216;mc&#8217;] contains the centroids of each class.
+options[&#8216;dmin&#8217;] contains min(d).
+options[&#8216;Ck&#8217;] is covariance matrix of each class.
+options[&#8216;string&#8217;] is a 8 character string that describes the performed
+classification (in this case &#8216;maha    &#8216;).</dd>
+<dt>Example: Training &amp; Test together:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_maha
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+ds, _ = Bcl_maha(X, d, Xt, None)        # Euclidean distance classifier
+p = Bev_performance(ds, dt)             # performance on test data
+print p</p>
+</dd>
+<dt>Example: Training only</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_maha
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = Bcl_maha(X, d, None)               # Euclidean distance classifier</p>
+</dd>
+<dt>Example: Testing only (after training only example):</dt>
+<dd>ds, _ = Bcl_maha(op, Xt)                # Euclidean distance classifier - testing
+p = Bev_performance(ds, dt)             # performance on test data</dd>
+</dl>
+<p class="last">See also Xdmin.</p>
+</dd>
+</dl>
+<p>D.Mery, PUC-DCC, May 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.Classification.Bcl_nn">
+<span id="balu-classification-bcl-nn-module"></span><h2>balu.Classification.Bcl_nn module<a class="headerlink" href="#module-balu.Classification.Bcl_nn" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.Classification.Bcl_nn.Bcl_nn">
+<code class="descclassname">balu.Classification.Bcl_nn.</code><code class="descname">Bcl_nn</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_nn.Bcl_nn" title="Permalink to this definition">¶</a></dt>
+<dd><p>ds, options = Bcl_nn(X, d, Xt, op)  Training &amp; Testing together
+options = Bcl_nn(X, d, op)     Training only
+ds, options = Bcl_nn(Xt, options) Testing only</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">Neural Network using scikit-learn&#8217;s MLPClassifier.</p>
+<dl class="docutils">
+<dt>Design data:</dt>
+<dd>X is a matrix with features (columns)
+d is the ideal classification for X
+options[&#8216;method&#8217;] = 0, 1, 2, 3 for &#8216;identity&#8217;,&#8217;tanh&#8217; or &#8216;relu&#8217; (default=3)
+options[&#8216;iter&#8217;] is the max. number of iterations used in the MLPClassifier.fit algorithm
+(default=100).</dd>
+<dt>Test data:</dt>
+<dd>Xt is a matrix with features (columns)</dd>
+<dt>Output:</dt>
+<dd>ds is the classification on test data
+options[&#8216;net&#8217;] contains information about the neural network
+(from class MLPClassifier in scikit-learn).
+options[&#8216;dmin&#8217;] contains np.min(d).
+options[&#8216;string&#8217;] is a 8 character string that describes the performed
+classification (e.g., &#8216;nn,3 &#8216; means relu - neural network).</dd>
+<dt>Example: Training &amp; Test together:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_nn
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;method&#8217;: 3, &#8216;iter&#8217;: 12}
+ds, _ = Bcl_nn(X, d, Xt, op)            # logistic - neural network
+p = Bev_performance(ds, dt)             # performance on test data</p>
+</dd>
+<dt>Example: Training only</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_nn</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;method&#8217;: 3, &#8216;iter&#8217;: 12}
+op = Bcl_nn(X, d, op)                   # logistic - neural network - training</p>
+</dd>
+<dt>Example: Testing only (after training only example):</dt>
+<dd>ds, _ = Bcl_nn(Xt, op)                  # logistic - neural network - testing
+p = Bev_performance(ds, dt)             # performance on test data</dd>
+</dl>
+<p class="last">Implementation based on Bcl_nnlgm from Balu Matlab toolbox and Neural Network function
+from scikit-learn.</p>
+</dd>
+</dl>
+<p>D.Mery, PUC-DCC, 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>And</p>
+<p>D. Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) (2016)
+<a class="reference external" href="https://github.com/dipaco">https://github.com/dipaco</a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.Classification.Bcl_outscore">
+<span id="balu-classification-bcl-outscore-module"></span><h2>balu.Classification.Bcl_outscore module<a class="headerlink" href="#module-balu.Classification.Bcl_outscore" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.Classification.Bcl_outscore.Bcl_outscore">
+<code class="descclassname">balu.Classification.Bcl_outscore.</code><code class="descname">Bcl_outscore</code><span class="sig-paren">(</span><em>ds</em>, <em>score</em>, <em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_outscore.Bcl_outscore" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-balu.Classification.Bcl_qda">
+<span id="balu-classification-bcl-qda-module"></span><h2>balu.Classification.Bcl_qda module<a class="headerlink" href="#module-balu.Classification.Bcl_qda" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.Classification.Bcl_qda.Bcl_qda">
+<code class="descclassname">balu.Classification.Bcl_qda.</code><code class="descname">Bcl_qda</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_qda.Bcl_qda" title="Permalink to this definition">¶</a></dt>
+<dd><p>ds, options = Bcl_qda(X, d, Xt, op)  Training &amp; Testing together
+options = Bcl_qda(X, d, op)     Training only
+ds, options = Bcl_qda(Xt, options) Testing only</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">QDA (quadratic discriminant analysis) classifier.</p>
+<dl class="docutils">
+<dt>Design data:</dt>
+<dd>X is a matrix with features (columns)
+d is the ideal classification for X
+options.p is the prior probability, if p is not given,
+it will be estimated proportional to the number of samples of each
+class.</dd>
+<dt>Test data:</dt>
+<dd>Xt is a matrix with features (columns)</dd>
+<dt>Output:</dt>
+<dd>ds is the classification on test data
+options[&#8216;dmin&#8217;] contains min(d).
+options[&#8216;Ck&#8217;] is covariance matrix of each class.
+optionsmc contains the centroids of each class.
+options.string is a 8 character string that describes the performed
+classification (in this case &#8216;qda     &#8216;).</dd>
+<dt>Reference:</dt>
+<dd>Hastie, T.; Tibshirani, R.; Friedman, J. (2001): The Elements of
+Statistical Learning, Springer (pages 84-90)</dd>
+<dt>Example: Training &amp; Test together:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_qda
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;p&#8217;: []}
+ds, _ = Bcl_qda(X, d, Xt, op)           # QDA classifier
+p = Bev_performance(ds, dt)             # performance on test data
+print p</p>
+</dd>
+<dt>Example: Training only</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_qda</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;p&#8217;: [0.75, 0.25]}                # prior probability for each class
+op = Bcl_qda(X, d, op)                  # QDA - training</p>
+</dd>
+<dt>Example: Testing only (after training only example):</dt>
+<dd>ds, op = Bcl_qda(Xt, op)                # QDA - testing
+p = Bev_performance(ds, dt)             # performance on test data</dd>
+</dl>
+<p class="last">See also Blda.</p>
+</dd>
+</dl>
+<p>(c) GRIMA, PUC-DCC 2011 - D.Mery, E.Cortazar
+<a class="reference external" href="http://grima.ing.puc.cl">http://grima.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.Classification.Bcl_structure">
+<span id="balu-classification-bcl-structure-module"></span><h2>balu.Classification.Bcl_structure module<a class="headerlink" href="#module-balu.Classification.Bcl_structure" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.Classification.Bcl_structure.Bcl_structure">
+<code class="descclassname">balu.Classification.Bcl_structure.</code><code class="descname">Bcl_structure</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_structure.Bcl_structure" title="Permalink to this definition">¶</a></dt>
+<dd><p>ds = Bcl_structure(X, d, Xt, options)  Training &amp; Testing together
+options = Bcl_structure(X, d, options)     Training only
+ds = Bcl_structure(Xt, options)      Testing only</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">Classification using Balu classifier(s) defined in structure b.</p>
+<dl class="docutils">
+<dt>Design data:</dt>
+<dd><p class="first">X is a matrix with features (columns)
+d is the ideal classification for X
+options is a Balu classifier structure b with</p>
+<blockquote>
+<div>b.name      = Balu classifier&#8217;s name
+b.options   = options of the classifier</div></blockquote>
+<p class="last">b can define one or more classifiers (see example).</p>
+</dd>
+<dt>Test data:</dt>
+<dd>Xt is a matrix with features (columns)</dd>
+<dt>Output:</dt>
+<dd>ds is the classification on test data (one column per classifier)</dd>
+<dt>Example: Training &amp; Test together:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_structure
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p>data = balu_load(&#8216;datagauss&#8217;)                       # simulated data(2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+d = data[&#8216;d&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+dt = data[&#8216;dt&#8217;]
+Xn = [&#8216;eta_1&#8217;, &#8216;eta_2&#8217;]</p>
+<dl class="docutils">
+<dt>b = [</dt>
+<dd>{&#8216;name&#8217;: &#8216;knn&#8217;,  &#8216;options&#8217;: {&#8216;k&#8217;: 5  }},         # KNN with 5 neighbors
+{&#8216;name&#8217;: &#8216;knn&#8217;,  &#8216;options&#8217;: {&#8216;k&#8217;: 7  }},         # KNN with 5 neighbors
+{&#8216;name&#8217;: &#8216;knn&#8217;,  &#8216;options&#8217;: {&#8216;k&#8217;: 9  }},         # KNN with 5 neighbors
+{&#8216;name&#8217;: &#8216;lda&#8217;,  &#8216;options&#8217;: {&#8216;p&#8217;: [] }},         # LDA
+{&#8216;name&#8217;: &#8216;qda&#8217;,  &#8216;options&#8217;: {&#8216;p&#8217;: [] }},         # QDA
+{&#8216;name&#8217;: &#8216;nn&#8217; ,  &#8216;options&#8217;: {&#8216;method&#8217;: 2}},      # Neural Network
+{&#8216;name&#8217;: &#8216;svm&#8217;,  &#8216;options&#8217;: {&#8216;kernel&#8217;: 3}},      # rbf-SVM
+{&#8216;name&#8217;: &#8216;maha&#8217;, &#8216;options&#8217;: {}},                 # Mahalanobis distance
+{&#8216;name&#8217;: &#8216;dmin&#8217;, &#8216;options&#8217;: {}},                 # Euclidean distance</dd>
+</dl>
+<p class="last">]
+op = b
+ds, struct = Bcl_structure(X, d, Xt, op)             # ds has 9 columns
+p = Bev_performance(ds, dt)                          # p has 9 performances</p>
+</dd>
+<dt>Example: Training only</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_structure</p>
+<p>data = balu_load(&#8216;datagauss&#8217;)                       # simulated data(2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+d = data[&#8216;d&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+dt = data[&#8216;dt&#8217;]
+Xn = [&#8216;eta_1&#8217;, &#8216;eta_2&#8217;]</p>
+<dl class="docutils">
+<dt>b = [</dt>
+<dd>{&#8216;name&#8217;: &#8216;knn&#8217;,  &#8216;options&#8217;: {&#8216;k&#8217;: 5  }},         # KNN with 5 neighbors
+{&#8216;name&#8217;: &#8216;knn&#8217;,  &#8216;options&#8217;: {&#8216;k&#8217;: 7  }},         # KNN with 5 neighbors
+{&#8216;name&#8217;: &#8216;knn&#8217;,  &#8216;options&#8217;: {&#8216;k&#8217;: 9  }},         # KNN with 5 neighbors
+{&#8216;name&#8217;: &#8216;lda&#8217;,  &#8216;options&#8217;: {&#8216;p&#8217;: [] }},         # LDA
+{&#8216;name&#8217;: &#8216;qda&#8217;,  &#8216;options&#8217;: {&#8216;p&#8217;: [] }},         # QDA
+{&#8216;name&#8217;: &#8216;nn&#8217; ,  &#8216;options&#8217;: {&#8216;method&#8217;: 2}},      # Neural Network
+{&#8216;name&#8217;: &#8216;svm&#8217;,  &#8216;options&#8217;: {&#8216;kernel&#8217;: 3}},      # rbf-SVM
+{&#8216;name&#8217;: &#8216;maha&#8217;, &#8216;options&#8217;: {}},                 # Mahalanobis distance
+{&#8216;name&#8217;: &#8216;dmin&#8217;, &#8216;options&#8217;: {}},                 # Euclidean distance</dd>
+</dl>
+<p class="last">]
+op = b
+struct = Bcl_structure(X, d, op)                     # Training only</p>
+</dd>
+<dt>Example: Testing only (after training only example):</dt>
+<dd>ds, _ = Bcl_structure(Xt, struct)                    # Testing only
+p = Bev_performance(ds, dt)</dd>
+</dl>
+<p class="last">See also Bcl_exe.</p>
+</dd>
+</dl>
+<p>D.Mery, PUC-DCC, Jul 2009
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.Classification.Bcl_svm">
+<span id="balu-classification-bcl-svm-module"></span><h2>balu.Classification.Bcl_svm module<a class="headerlink" href="#module-balu.Classification.Bcl_svm" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.Classification.Bcl_svm.Bcl_svm">
+<code class="descclassname">balu.Classification.Bcl_svm.</code><code class="descname">Bcl_svm</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_svm.Bcl_svm" title="Permalink to this definition">¶</a></dt>
+<dd><p>ds      = Bcl_svm(X, d, Xt, options)  Training &amp; Testing together
+options = Bcl_svm(X, d, options)     Training only
+ds      = Bcl_svm(Xt, options)      Testing only</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">Support Vector Machine approach using the scikit-learn library.</p>
+<dl class="last docutils">
+<dt>Design data:</dt>
+<dd><p class="first">X is a matrix with features (columns)
+d is the ideal classification for X</p>
+<p>options[&#8216;kernel&#8217;] defines the SVM-kernel as follows:</p>
+<p>0: &#8216;linear&#8217;      Linear kernel or dot product (default)
+1: &#8216;poly&#8217;        Polynomial kernel (default order 3)
+2: &#8216;rbf&#8217;         Gaussian Radial Basis Function kernel
+3: &#8216;sigmoid&#8217;     Multilayer Perceptron kernel (default scale 1)</p>
+<p class="last">kernel can be either int or string.</p>
+</dd>
+<dt>Test data:</dt>
+<dd>Xt is a matrix with features (columns)</dd>
+<dt>Output:</dt>
+<dd>ds is the classification on test data
+options[&#8216;svmStruct&#8217;] contains information about the trained classifier
+(from SVC class of scikit-learn).
+options.string is a 8 character string that describes the performed
+classification (e.g., &#8216;svm,4  &#8216; means rbf-SVM).</dd>
+<dt>Example: Training &amp; Test together:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_svm
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;kernel&#8217;: 2}
+ds, _ = Bcl_svm(X, d, Xt, op)           # rbf-SVM classifier
+p = Bev_performance(ds, dt)             # performance on test data
+print p</p>
+</dd>
+<dt>Example: Training only</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_svm
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;kernel&#8217;: 2}
+op = Bcl_svm(X, d, op)                  # rbf-SVM classifier</p>
+</dd>
+<dt>Example: Testing only (after training only example):</dt>
+<dd>ds, _ = Bcl_svm(Xt, op)                 # rbf-SVM classifier testing
+p = Bev_performance(ds, dt)             # performance on test data</dd>
+</dl>
+</dd>
+</dl>
+<p>D.Mery, PUC-DCC, 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.Classification">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-balu.Classification" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.Classification.Bcl_lda">
+<code class="descclassname">balu.Classification.</code><code class="descname">Bcl_lda</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_lda" title="Permalink to this definition">¶</a></dt>
+<dd><p>ds, options = Bcl_lda(X,d,Xt,[])  Training &amp; Testing together
+options = Bcl_lda(X,d,[])     Training only
+ds, options = Bcl_lda(Xt,options) Testing only</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">LDA (linear discriminant analysis) classifier.
+We assume that the classes have a common covariance matrix</p>
+<dl class="docutils">
+<dt>Design data:</dt>
+<dd>X is a matrix with features (columns)
+d is the ideal classification for X
+options.p is the prior probability, if p is empty,
+it will be estimated proportional to the number of samples of each
+class.</dd>
+<dt>Test data:</dt>
+<dd>Xt is a matrix with features (columns)</dd>
+<dt>Output:</dt>
+<dd>ds is the classification on test data
+options[&#8216;dmin&#8217;] contains np.min(d).
+options[&#8216;Cw1&#8217;] is pinv(within-class covariance).
+options[&#8216;mc&#8217;] contains the centroids of each class.
+options[&#8216;string&#8217;] is a 8 character string that describes the performed
+classification (in this case &#8216;lda     &#8216;).</dd>
+<dt>Reference:</dt>
+<dd>Hastie, T.; Tibshirani, R.; Friedman, J. (2001): The Elements of
+Statistical Learning, Springer (pages 84-90)</dd>
+</dl>
+<p>Example: Training &amp; Test together:</p>
+<blockquote>
+<div><p>from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_lda
+from balu.InputOutput import Bio_plotfeatures
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p>data = balu_load(&#8216;datagauss&#8217;)           #simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+d = data[&#8216;d&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;p&#8217;: []}
+ds, options = Bcl_lda(X, d, Xt, op)     # LDA classifier
+p = Bev_performance(ds, dt)             # performance on test data
+print p</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>Example: Training only</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_lda
+from balu.InputOutput import Bio_plotfeatures</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           #simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+d = data[&#8216;d&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;p&#8217;: [0.75, 0.25]}                # prior probability for each class
+op = Bcl_lda(X,d,op);                   # LDA - training</p>
+</dd>
+<dt>Example: Testing only (after training only example):</dt>
+<dd><p class="first">from balu.Classification import Bcl_lda</p>
+<p class="last">ds, _ = Bcl_lda(Xt, op)                 # LDA - testing
+p = Bev_performance(ds, dt)             # performance on test data</p>
+</dd>
+</dl>
+<p class="last">See also Bcl_qda.</p>
+</dd>
+</dl>
+<p>(c) GRIMA-DCCUC, 2011
+<a class="reference external" href="http://grima.ing.puc.cl">http://grima.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.Classification.Bcl_construct">
+<code class="descclassname">balu.Classification.</code><code class="descname">Bcl_construct</code><span class="sig-paren">(</span><em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_construct" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is not a classifier!!!
+This function is called by Balu classifier functions (such as Bcl_lda) to
+build the training and testing data.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.Classification.Bcl_outscore">
+<code class="descclassname">balu.Classification.</code><code class="descname">Bcl_outscore</code><span class="sig-paren">(</span><em>ds</em>, <em>score</em>, <em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_outscore" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">balu.Classification.</code><code class="descname">Bcl_lda</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span></dt>
+<dd><p>ds, options = Bcl_lda(X,d,Xt,[])  Training &amp; Testing together
+options = Bcl_lda(X,d,[])     Training only
+ds, options = Bcl_lda(Xt,options) Testing only</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">LDA (linear discriminant analysis) classifier.
+We assume that the classes have a common covariance matrix</p>
+<dl class="docutils">
+<dt>Design data:</dt>
+<dd>X is a matrix with features (columns)
+d is the ideal classification for X
+options.p is the prior probability, if p is empty,
+it will be estimated proportional to the number of samples of each
+class.</dd>
+<dt>Test data:</dt>
+<dd>Xt is a matrix with features (columns)</dd>
+<dt>Output:</dt>
+<dd>ds is the classification on test data
+options[&#8216;dmin&#8217;] contains np.min(d).
+options[&#8216;Cw1&#8217;] is pinv(within-class covariance).
+options[&#8216;mc&#8217;] contains the centroids of each class.
+options[&#8216;string&#8217;] is a 8 character string that describes the performed
+classification (in this case &#8216;lda     &#8216;).</dd>
+<dt>Reference:</dt>
+<dd>Hastie, T.; Tibshirani, R.; Friedman, J. (2001): The Elements of
+Statistical Learning, Springer (pages 84-90)</dd>
+</dl>
+<p>Example: Training &amp; Test together:</p>
+<blockquote>
+<div><p>from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_lda
+from balu.InputOutput import Bio_plotfeatures
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p>data = balu_load(&#8216;datagauss&#8217;)           #simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+d = data[&#8216;d&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;p&#8217;: []}
+ds, options = Bcl_lda(X, d, Xt, op)     # LDA classifier
+p = Bev_performance(ds, dt)             # performance on test data
+print p</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>Example: Training only</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_lda
+from balu.InputOutput import Bio_plotfeatures</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           #simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+d = data[&#8216;d&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;p&#8217;: [0.75, 0.25]}                # prior probability for each class
+op = Bcl_lda(X,d,op);                   # LDA - training</p>
+</dd>
+<dt>Example: Testing only (after training only example):</dt>
+<dd><p class="first">from balu.Classification import Bcl_lda</p>
+<p class="last">ds, _ = Bcl_lda(Xt, op)                 # LDA - testing
+p = Bev_performance(ds, dt)             # performance on test data</p>
+</dd>
+</dl>
+<p class="last">See also Bcl_qda.</p>
+</dd>
+</dl>
+<p>(c) GRIMA-DCCUC, 2011
+<a class="reference external" href="http://grima.ing.puc.cl">http://grima.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.Classification.Bcl_structure">
+<code class="descclassname">balu.Classification.</code><code class="descname">Bcl_structure</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_structure" title="Permalink to this definition">¶</a></dt>
+<dd><p>ds = Bcl_structure(X, d, Xt, options)  Training &amp; Testing together
+options = Bcl_structure(X, d, options)     Training only
+ds = Bcl_structure(Xt, options)      Testing only</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">Classification using Balu classifier(s) defined in structure b.</p>
+<dl class="docutils">
+<dt>Design data:</dt>
+<dd><p class="first">X is a matrix with features (columns)
+d is the ideal classification for X
+options is a Balu classifier structure b with</p>
+<blockquote>
+<div>b.name      = Balu classifier&#8217;s name
+b.options   = options of the classifier</div></blockquote>
+<p class="last">b can define one or more classifiers (see example).</p>
+</dd>
+<dt>Test data:</dt>
+<dd>Xt is a matrix with features (columns)</dd>
+<dt>Output:</dt>
+<dd>ds is the classification on test data (one column per classifier)</dd>
+<dt>Example: Training &amp; Test together:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_structure
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p>data = balu_load(&#8216;datagauss&#8217;)                       # simulated data(2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+d = data[&#8216;d&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+dt = data[&#8216;dt&#8217;]
+Xn = [&#8216;eta_1&#8217;, &#8216;eta_2&#8217;]</p>
+<dl class="docutils">
+<dt>b = [</dt>
+<dd>{&#8216;name&#8217;: &#8216;knn&#8217;,  &#8216;options&#8217;: {&#8216;k&#8217;: 5  }},         # KNN with 5 neighbors
+{&#8216;name&#8217;: &#8216;knn&#8217;,  &#8216;options&#8217;: {&#8216;k&#8217;: 7  }},         # KNN with 5 neighbors
+{&#8216;name&#8217;: &#8216;knn&#8217;,  &#8216;options&#8217;: {&#8216;k&#8217;: 9  }},         # KNN with 5 neighbors
+{&#8216;name&#8217;: &#8216;lda&#8217;,  &#8216;options&#8217;: {&#8216;p&#8217;: [] }},         # LDA
+{&#8216;name&#8217;: &#8216;qda&#8217;,  &#8216;options&#8217;: {&#8216;p&#8217;: [] }},         # QDA
+{&#8216;name&#8217;: &#8216;nn&#8217; ,  &#8216;options&#8217;: {&#8216;method&#8217;: 2}},      # Neural Network
+{&#8216;name&#8217;: &#8216;svm&#8217;,  &#8216;options&#8217;: {&#8216;kernel&#8217;: 3}},      # rbf-SVM
+{&#8216;name&#8217;: &#8216;maha&#8217;, &#8216;options&#8217;: {}},                 # Mahalanobis distance
+{&#8216;name&#8217;: &#8216;dmin&#8217;, &#8216;options&#8217;: {}},                 # Euclidean distance</dd>
+</dl>
+<p class="last">]
+op = b
+ds, struct = Bcl_structure(X, d, Xt, op)             # ds has 9 columns
+p = Bev_performance(ds, dt)                          # p has 9 performances</p>
+</dd>
+<dt>Example: Training only</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_structure</p>
+<p>data = balu_load(&#8216;datagauss&#8217;)                       # simulated data(2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+d = data[&#8216;d&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+dt = data[&#8216;dt&#8217;]
+Xn = [&#8216;eta_1&#8217;, &#8216;eta_2&#8217;]</p>
+<dl class="docutils">
+<dt>b = [</dt>
+<dd>{&#8216;name&#8217;: &#8216;knn&#8217;,  &#8216;options&#8217;: {&#8216;k&#8217;: 5  }},         # KNN with 5 neighbors
+{&#8216;name&#8217;: &#8216;knn&#8217;,  &#8216;options&#8217;: {&#8216;k&#8217;: 7  }},         # KNN with 5 neighbors
+{&#8216;name&#8217;: &#8216;knn&#8217;,  &#8216;options&#8217;: {&#8216;k&#8217;: 9  }},         # KNN with 5 neighbors
+{&#8216;name&#8217;: &#8216;lda&#8217;,  &#8216;options&#8217;: {&#8216;p&#8217;: [] }},         # LDA
+{&#8216;name&#8217;: &#8216;qda&#8217;,  &#8216;options&#8217;: {&#8216;p&#8217;: [] }},         # QDA
+{&#8216;name&#8217;: &#8216;nn&#8217; ,  &#8216;options&#8217;: {&#8216;method&#8217;: 2}},      # Neural Network
+{&#8216;name&#8217;: &#8216;svm&#8217;,  &#8216;options&#8217;: {&#8216;kernel&#8217;: 3}},      # rbf-SVM
+{&#8216;name&#8217;: &#8216;maha&#8217;, &#8216;options&#8217;: {}},                 # Mahalanobis distance
+{&#8216;name&#8217;: &#8216;dmin&#8217;, &#8216;options&#8217;: {}},                 # Euclidean distance</dd>
+</dl>
+<p class="last">]
+op = b
+struct = Bcl_structure(X, d, op)                     # Training only</p>
+</dd>
+<dt>Example: Testing only (after training only example):</dt>
+<dd>ds, _ = Bcl_structure(Xt, struct)                    # Testing only
+p = Bev_performance(ds, dt)</dd>
+</dl>
+<p class="last">See also Bcl_exe.</p>
+</dd>
+</dl>
+<p>D.Mery, PUC-DCC, Jul 2009
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.Classification.Bcl_knn">
+<code class="descclassname">balu.Classification.</code><code class="descname">Bcl_knn</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_knn" title="Permalink to this definition">¶</a></dt>
+<dd><p>ds, options = Bcl_knn(X, d, Xt, options)  Training &amp; Testing together
+options = Bcl_knn(X, d, options)     Training only
+ds, _ = Bcl_knn(Xt, options)      Testing only</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">KNN (k-nearest neighbors) classifier using randomized kd-tree
+forest from FLANN. This implementation requires scikit-learn.</p>
+<dl class="last docutils">
+<dt>Design data:</dt>
+<dd>X is a matrix with features (columns)
+d is the ideal classification for X
+options.k is the number of neighbors (default=10)</dd>
+<dt>Test data:</dt>
+<dd>Xt is a matrix with features (columns)</dd>
+<dt>Output:</dt>
+<dd>ds is the classification on test data
+options[&#8216;kdtree&#8217;] contains information about the randomized kdtree
+(from KDTree function of scikit-learn).
+options[&#8216;string&#8217;] is a 8 character string that describes the performed
+classification (e.g., &#8216;knn,10  &#8216; means knn with k=10).</dd>
+<dt>Example: Training &amp; Test together:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_knn
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;k&#8217;: 10}
+ds, _ = Bcl_knn(X, d, Xt, op)           # knn with 10 neighbors
+p = Bev_performance(ds, dt)             # performance on test data
+print p</p>
+</dd>
+<dt>Example: Training only</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_knn</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;k&#8217;: 10}
+op = Bcl_knn(X, d, op)                  # knn with 10 neighbors</p>
+</dd>
+<dt>Example: Testing only (after training only example):</dt>
+<dd>ds, _ = Bcl_knn(Xt, op)                 # knn with 10 neighbors - testing
+p = Bev_performance(ds, dt)             # performance on test data</dd>
+</dl>
+</dd>
+</dl>
+<p>D.Mery, C. Mena PUC-DCC, 2010-2013
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.Classification.Bcl_maha">
+<code class="descclassname">balu.Classification.</code><code class="descname">Bcl_maha</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_maha" title="Permalink to this definition">¶</a></dt>
+<dd><p>ds, options = Bcl_maha(X, d, Xt, None)  Training &amp; Testing together
+options = Bcl_maha(X, d, None)     Training only
+ds, options = Bcl_maha(Xt, options) Testing only</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">Classifier using Mahalanobis minimal distance</p>
+<dl class="docutils">
+<dt>Design data:</dt>
+<dd>X is a matrix with features (columns)
+d is the ideal classification for X</dd>
+<dt>Test data:</dt>
+<dd>Xt is a matrix with features (columns)</dd>
+<dt>Output:</dt>
+<dd>ds is the classification on test data
+options[&#8216;mc&#8217;] contains the centroids of each class.
+options[&#8216;dmin&#8217;] contains min(d).
+options[&#8216;Ck&#8217;] is covariance matrix of each class.
+options[&#8216;string&#8217;] is a 8 character string that describes the performed
+classification (in this case &#8216;maha    &#8216;).</dd>
+<dt>Example: Training &amp; Test together:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_maha
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+ds, _ = Bcl_maha(X, d, Xt, None)        # Euclidean distance classifier
+p = Bev_performance(ds, dt)             # performance on test data
+print p</p>
+</dd>
+<dt>Example: Training only</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_maha
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = Bcl_maha(X, d, None)               # Euclidean distance classifier</p>
+</dd>
+<dt>Example: Testing only (after training only example):</dt>
+<dd>ds, _ = Bcl_maha(op, Xt)                # Euclidean distance classifier - testing
+p = Bev_performance(ds, dt)             # performance on test data</dd>
+</dl>
+<p class="last">See also Xdmin.</p>
+</dd>
+</dl>
+<p>D.Mery, PUC-DCC, May 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.Classification.Bcl_qda">
+<code class="descclassname">balu.Classification.</code><code class="descname">Bcl_qda</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_qda" title="Permalink to this definition">¶</a></dt>
+<dd><p>ds, options = Bcl_qda(X, d, Xt, op)  Training &amp; Testing together
+options = Bcl_qda(X, d, op)     Training only
+ds, options = Bcl_qda(Xt, options) Testing only</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">QDA (quadratic discriminant analysis) classifier.</p>
+<dl class="docutils">
+<dt>Design data:</dt>
+<dd>X is a matrix with features (columns)
+d is the ideal classification for X
+options.p is the prior probability, if p is not given,
+it will be estimated proportional to the number of samples of each
+class.</dd>
+<dt>Test data:</dt>
+<dd>Xt is a matrix with features (columns)</dd>
+<dt>Output:</dt>
+<dd>ds is the classification on test data
+options[&#8216;dmin&#8217;] contains min(d).
+options[&#8216;Ck&#8217;] is covariance matrix of each class.
+optionsmc contains the centroids of each class.
+options.string is a 8 character string that describes the performed
+classification (in this case &#8216;qda     &#8216;).</dd>
+<dt>Reference:</dt>
+<dd>Hastie, T.; Tibshirani, R.; Friedman, J. (2001): The Elements of
+Statistical Learning, Springer (pages 84-90)</dd>
+<dt>Example: Training &amp; Test together:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_qda
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;p&#8217;: []}
+ds, _ = Bcl_qda(X, d, Xt, op)           # QDA classifier
+p = Bev_performance(ds, dt)             # performance on test data
+print p</p>
+</dd>
+<dt>Example: Training only</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_qda</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;p&#8217;: [0.75, 0.25]}                # prior probability for each class
+op = Bcl_qda(X, d, op)                  # QDA - training</p>
+</dd>
+<dt>Example: Testing only (after training only example):</dt>
+<dd>ds, op = Bcl_qda(Xt, op)                # QDA - testing
+p = Bev_performance(ds, dt)             # performance on test data</dd>
+</dl>
+<p class="last">See also Blda.</p>
+</dd>
+</dl>
+<p>(c) GRIMA, PUC-DCC 2011 - D.Mery, E.Cortazar
+<a class="reference external" href="http://grima.ing.puc.cl">http://grima.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.Classification.Bcl_dmin">
+<code class="descclassname">balu.Classification.</code><code class="descname">Bcl_dmin</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_dmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>ds, options = Bcl_dmin(X, d, Xt, None)  Training &amp; Testing together
+options = Bcl_dmin(X, d, None)     Training only
+ds      = Bcl_dmin(Xt, options) Testing only</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">Classifier using Euclidean minimal distance</p>
+<dl class="docutils">
+<dt>Design data:</dt>
+<dd>X is a matrix with features (columns)
+d is the ideal classification for X</dd>
+<dt>Test data:</dt>
+<dd>Xt is a matrix with features (columns)</dd>
+<dt>Output:</dt>
+<dd>ds is the classification on test data
+options[&#8216;mc&#8217;] contains the centroids of each class.
+options[´dmin&#8217;] contains np.min(d).
+options[&#8216;string&#8217;] is a 8 character string that describes the performed
+classification (in this case &#8216;dmin    &#8216;).</dd>
+<dt>Example: Training &amp; Test together:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_dmin
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+ds, _ = Bcl_dmin(X, d, Xt, None)        # Euclidean distance classifier
+p = Bev_performance(ds, dt)             # performance on test data</p>
+</dd>
+<dt>Example: Training only</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_dmin</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = Bcl_dmin(X, d, None)               # Euclidean distance classifier</p>
+</dd>
+<dt>Example: Testing only (after training only example):</dt>
+<dd>ds, _ = Bcl_dmin(Xt, op)                   # Euclidean distance classifier - testing
+p = Bev_performance(ds, dt)             # performance on test data</dd>
+</dl>
+<p class="last">See also Bcl_maha.</p>
+</dd>
+</dl>
+<p>D.Mery, PUC-DCC, May 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.Classification.Bcl_svm">
+<code class="descclassname">balu.Classification.</code><code class="descname">Bcl_svm</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_svm" title="Permalink to this definition">¶</a></dt>
+<dd><p>ds      = Bcl_svm(X, d, Xt, options)  Training &amp; Testing together
+options = Bcl_svm(X, d, options)     Training only
+ds      = Bcl_svm(Xt, options)      Testing only</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">Support Vector Machine approach using the scikit-learn library.</p>
+<dl class="last docutils">
+<dt>Design data:</dt>
+<dd><p class="first">X is a matrix with features (columns)
+d is the ideal classification for X</p>
+<p>options[&#8216;kernel&#8217;] defines the SVM-kernel as follows:</p>
+<p>0: &#8216;linear&#8217;      Linear kernel or dot product (default)
+1: &#8216;poly&#8217;        Polynomial kernel (default order 3)
+2: &#8216;rbf&#8217;         Gaussian Radial Basis Function kernel
+3: &#8216;sigmoid&#8217;     Multilayer Perceptron kernel (default scale 1)</p>
+<p class="last">kernel can be either int or string.</p>
+</dd>
+<dt>Test data:</dt>
+<dd>Xt is a matrix with features (columns)</dd>
+<dt>Output:</dt>
+<dd>ds is the classification on test data
+options[&#8216;svmStruct&#8217;] contains information about the trained classifier
+(from SVC class of scikit-learn).
+options.string is a 8 character string that describes the performed
+classification (e.g., &#8216;svm,4  &#8216; means rbf-SVM).</dd>
+<dt>Example: Training &amp; Test together:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_svm
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;kernel&#8217;: 2}
+ds, _ = Bcl_svm(X, d, Xt, op)           # rbf-SVM classifier
+p = Bev_performance(ds, dt)             # performance on test data
+print p</p>
+</dd>
+<dt>Example: Training only</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_svm
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;kernel&#8217;: 2}
+op = Bcl_svm(X, d, op)                  # rbf-SVM classifier</p>
+</dd>
+<dt>Example: Testing only (after training only example):</dt>
+<dd>ds, _ = Bcl_svm(Xt, op)                 # rbf-SVM classifier testing
+p = Bev_performance(ds, dt)             # performance on test data</dd>
+</dl>
+</dd>
+</dl>
+<p>D.Mery, PUC-DCC, 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.Classification.Bcl_nn">
+<code class="descclassname">balu.Classification.</code><code class="descname">Bcl_nn</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.Classification.Bcl_nn" title="Permalink to this definition">¶</a></dt>
+<dd><p>ds, options = Bcl_nn(X, d, Xt, op)  Training &amp; Testing together
+options = Bcl_nn(X, d, op)     Training only
+ds, options = Bcl_nn(Xt, options) Testing only</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">Neural Network using scikit-learn&#8217;s MLPClassifier.</p>
+<dl class="docutils">
+<dt>Design data:</dt>
+<dd>X is a matrix with features (columns)
+d is the ideal classification for X
+options[&#8216;method&#8217;] = 0, 1, 2, 3 for &#8216;identity&#8217;,&#8217;tanh&#8217; or &#8216;relu&#8217; (default=3)
+options[&#8216;iter&#8217;] is the max. number of iterations used in the MLPClassifier.fit algorithm
+(default=100).</dd>
+<dt>Test data:</dt>
+<dd>Xt is a matrix with features (columns)</dd>
+<dt>Output:</dt>
+<dd>ds is the classification on test data
+options[&#8216;net&#8217;] contains information about the neural network
+(from class MLPClassifier in scikit-learn).
+options[&#8216;dmin&#8217;] contains np.min(d).
+options[&#8216;string&#8217;] is a 8 character string that describes the performed
+classification (e.g., &#8216;nn,3 &#8216; means relu - neural network).</dd>
+<dt>Example: Training &amp; Test together:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_nn
+from balu.PerformanceEvaluation import Bev_performance</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;method&#8217;: 3, &#8216;iter&#8217;: 12}
+ds, _ = Bcl_nn(X, d, Xt, op)            # logistic - neural network
+p = Bev_performance(ds, dt)             # performance on test data</p>
+</dd>
+<dt>Example: Training only</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_load
+from balu.Classification import Bcl_nn</p>
+<p class="last">data = balu_load(&#8216;datagauss&#8217;)           # simulated data (2 classes, 2 features)
+X = data[&#8216;X&#8217;]
+Xt = data[&#8216;Xt&#8217;]
+d = data[&#8216;d&#8217;]
+dt = data[&#8216;dt&#8217;]
+Bio_plotfeatures(X, d)                  # plot feature space
+op = {&#8216;method&#8217;: 3, &#8216;iter&#8217;: 12}
+op = Bcl_nn(X, d, op)                   # logistic - neural network - training</p>
+</dd>
+<dt>Example: Testing only (after training only example):</dt>
+<dd>ds, _ = Bcl_nn(Xt, op)                  # logistic - neural network - testing
+p = Bev_performance(ds, dt)             # performance on test data</dd>
+</dl>
+<p class="last">Implementation based on Bcl_nnlgm from Balu Matlab toolbox and Neural Network function
+from scikit-learn.</p>
+</dd>
+</dl>
+<p>D.Mery, PUC-DCC, 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>And</p>
+<p>D. Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) (2016)
+<a class="reference external" href="https://github.com/dipaco">https://github.com/dipaco</a></p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">balu.Classification package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-balu.Classification.Bcl_construct">balu.Classification.Bcl_construct module</a></li>
+<li><a class="reference internal" href="#module-balu.Classification.Bcl_dmin">balu.Classification.Bcl_dmin module</a></li>
+<li><a class="reference internal" href="#module-balu.Classification.Bcl_knn">balu.Classification.Bcl_knn module</a></li>
+<li><a class="reference internal" href="#module-balu.Classification.Bcl_lda">balu.Classification.Bcl_lda module</a></li>
+<li><a class="reference internal" href="#module-balu.Classification.Bcl_maha">balu.Classification.Bcl_maha module</a></li>
+<li><a class="reference internal" href="#module-balu.Classification.Bcl_nn">balu.Classification.Bcl_nn module</a></li>
+<li><a class="reference internal" href="#module-balu.Classification.Bcl_outscore">balu.Classification.Bcl_outscore module</a></li>
+<li><a class="reference internal" href="#module-balu.Classification.Bcl_qda">balu.Classification.Bcl_qda module</a></li>
+<li><a class="reference internal" href="#module-balu.Classification.Bcl_structure">balu.Classification.Bcl_structure module</a></li>
+<li><a class="reference internal" href="#module-balu.Classification.Bcl_svm">balu.Classification.Bcl_svm module</a></li>
+<li><a class="reference internal" href="#module-balu.Classification">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/rst/balu.Classification.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">balu 1.0.14 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Diego Patiño.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

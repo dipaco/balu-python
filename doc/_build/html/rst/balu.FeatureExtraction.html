@@ -1,0 +1,1053 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>balu.FeatureExtraction package &#8212; balu 1.0.14 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.14',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">balu 1.0.14 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="balu-featureextraction-package">
+<h1>balu.FeatureExtraction package<a class="headerlink" href="#balu-featureextraction-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-balu.FeatureExtraction.Bfx_all">
+<span id="balu-featureextraction-bfx-all-module"></span><h2>balu.FeatureExtraction.Bfx_all module<a class="headerlink" href="#module-balu.FeatureExtraction.Bfx_all" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_all.Bfx_all">
+<code class="descclassname">balu.FeatureExtraction.Bfx_all.</code><code class="descname">Bfx_all</code><span class="sig-paren">(</span><em>I</em>, <em>R=None</em>, <em>options=None</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_all.Bfx_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>X, Xn = Bfx_all(I,R,options)
+X, Xn = Bfx_all(I,options)</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">All pixels.</p>
+<p>X is the features vector, Xn is the list feature names (see Example to
+see how it works).</p>
+<dl class="last docutils">
+<dt>Example:</dt>
+<dd>I = imread(&#8216;testimg1.jpg&#8217;)             # input image
+X, Xn = Bfx_all(I)                   # all pixels</dd>
+</dl>
+</dd>
+</dl>
+<p>(c) D.Mery, PUC-DCC, 2012
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.FeatureExtraction.Bfx_basicgeo">
+<span id="balu-featureextraction-bfx-basicgeo-module"></span><h2>balu.FeatureExtraction.Bfx_basicgeo module<a class="headerlink" href="#module-balu.FeatureExtraction.Bfx_basicgeo" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_basicgeo.Bfx_basicgeo">
+<code class="descclassname">balu.FeatureExtraction.Bfx_basicgeo.</code><code class="descname">Bfx_basicgeo</code><span class="sig-paren">(</span><em>R</em>, <em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_basicgeo.Bfx_basicgeo" title="Permalink to this definition">¶</a></dt>
+<dd><p>X, Xn = Bfx_geobasic(R, options)</p>
+<p>Toolbox: Balu</p>
+<p>Standard geometric features of a binary image R.
+This function calls regionprops of Scikit image library.</p>
+<p>options[&#8216;show&#8217;] = True display messages.</p>
+<p>X is the feature vector
+Xn is the list of feature names.</p>
+<p>See example:</p>
+<p>Example:
+from balu.ImagesAndData import balu_imageload
+I = balu_imageload(&#8216;testimg1.jpg&#8217;) #input image
+R = Bim_segbalu(I) # segmentation
+X, Xn = Bfx_basicgeo(R); # basic geometric features
+Bio_printfeatures(X, Xn)</p>
+<p>See also Bfx_fitellipse, Bfx_hugeo, Bfx_gupta, Bfx_flusser.</p>
+<p>(c) D.Mery, PUC - DCC, 2010
+http: // dmery.ing.puc.cl</p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.FeatureExtraction.Bfx_fitellipse">
+<span id="balu-featureextraction-bfx-fitellipse-module"></span><h2>balu.FeatureExtraction.Bfx_fitellipse module<a class="headerlink" href="#module-balu.FeatureExtraction.Bfx_fitellipse" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_fitellipse.Bfx_fitellipse">
+<code class="descclassname">balu.FeatureExtraction.Bfx_fitellipse.</code><code class="descname">Bfx_fitellipse</code><span class="sig-paren">(</span><em>R</em>, <em>options=None</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_fitellipse.Bfx_fitellipse" title="Permalink to this definition">¶</a></dt>
+<dd><p>X, Xn = Bfx_fitellipse(R, options)
+X, Xn = Bfx_fitellipse(R)</p>
+<p>Toolbox: Balu</p>
+<blockquote>
+<div><blockquote>
+<div><p>Fit ellipse for the boundary of a binary image R.</p>
+<p>options.show = 1 display mesagges.</p>
+<dl class="docutils">
+<dt>X is a 6 elements vector:</dt>
+<dd><p class="first">X(1): Ellipse-centre i direction
+X(2): Ellipse-centre j direction
+X(3): Ellipse-minor axis
+X(4): Ellipse-major axis
+X(5): Ellipse-orientation
+X(6): Ellipse-eccentricity
+X(7): Ellipse-area</p>
+<p>Xn is the list of feature names.</p>
+<p class="last">Xn is the list of feature names.</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>Fitzgibbon, A.; Pilu, M. &amp; Fisher, R.B. (1999): Direct Least Square
+Fitting Ellipses, IEEE Trans. Pattern Analysis and Machine
+Intelligence, 21(5): 476-480.</dd>
+<dt>Example:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_imageload
+from balu.ImageProcessing import Bim_segbalu
+from balu.FeatureExtraction import Bfx_fitellipse
+from balu.InputOutput import Bio_printfeatures</p>
+<p class="last">I = balu_imageload(&#8216;testimg1.jpg&#8217;)              # input image
+R, E, J = Bim_segbalu(I)                        # segmentation
+X, Xn = Bfx_fitellipse(R)                       # ellipse features
+Bio_printfeatures(X, Xn)</p>
+</dd>
+</dl>
+<p>See also Bfx_basicgeo, Bfx_hugeo, Bfx_gupta, Bfx_flusser.</p>
+</div></blockquote>
+<p>(c) D.Mery, PUC-DCC, 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.FeatureExtraction.Bfx_flusser">
+<span id="balu-featureextraction-bfx-flusser-module"></span><h2>balu.FeatureExtraction.Bfx_flusser module<a class="headerlink" href="#module-balu.FeatureExtraction.Bfx_flusser" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_flusser.Bfx_flusser">
+<code class="descclassname">balu.FeatureExtraction.Bfx_flusser.</code><code class="descname">Bfx_flusser</code><span class="sig-paren">(</span><em>R</em>, <em>options={}</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_flusser.Bfx_flusser" title="Permalink to this definition">¶</a></dt>
+<dd><p>X, Xn = Bfx_flusser(R, options)
+X, Xn = Bfx_flusser(R)</p>
+<p>Toolbox: Balu</p>
+<blockquote>
+<div><blockquote>
+<div><p>Extract the four Flusser moments from binary image R.</p>
+<p>options.show = 1 display mesagges.</p>
+<dl class="docutils">
+<dt>X is a 4 elements vector:</dt>
+<dd>X(i): Flusser-moment i for i=1,...,4.</dd>
+</dl>
+<p>Xn is the list of feature names.</p>
+<p>Reference:
+Sonka et al. (1998): Image Processing, Analysis, and Machine Vision,
+PWS Publishing. Pacific Grove, Ca, 2nd Edition.</p>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_imageload
+from balu.ImageProcessing import Bim_segbalu
+from skimage.morphology import label
+from balu.FeatureExtraction import Bfx_flusser</p>
+<p>I = balu_imageload(&#8216;testimg3.jpg&#8217;)           # input image
+R, _, _ = Bim_segbalu(I)                           # segmentation
+L = label(R)                                 # regions
+n = int(L.max())
+imshow(L)
+show()
+X = np.array([])
+for i in range(n):</p>
+<blockquote>
+<div><p>Xi, Xn = Bfx_flusser(L == i + 1)         # Flusser moments
+if X.size == 0:</p>
+<blockquote>
+<div>X = Xi</div></blockquote>
+<dl class="docutils">
+<dt>else:</dt>
+<dd>X = np.vstack((X, Xi))</dd>
+</dl>
+</div></blockquote>
+<p class="last">print X</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>See also Bfx_standard, Bfx_hugeo, Bfx_fitellipse, Bfx_gupta.</p>
+</div></blockquote>
+<p>(c) D.Mery, PUC-DCC, 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.FeatureExtraction.Bfx_fourier">
+<span id="balu-featureextraction-bfx-fourier-module"></span><h2>balu.FeatureExtraction.Bfx_fourier module<a class="headerlink" href="#module-balu.FeatureExtraction.Bfx_fourier" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_fourier.Bfx_fourier">
+<code class="descclassname">balu.FeatureExtraction.Bfx_fourier.</code><code class="descname">Bfx_fourier</code><span class="sig-paren">(</span><em>I</em>, <em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_fourier.Bfx_fourier" title="Permalink to this definition">¶</a></dt>
+<dd><p>% [X,Xn,Xu] = Xfourier(I,R,options)
+% [X,Xn,Xu] = Xfourier(I,options)
+%
+% Toolbox Xvis: Fourier features
+%
+%    X is the features vector, Xn is the list of feature names (see Example
+%    to see how it works).
+%
+%   Example:
+%      options.Nfourier  = 64;                % imresize vertical
+%      options.Mfourier  = 64;                % imresize horizontal
+%      options.mfourier  = 2;                 % imresize frequency vertical
+%      options.nfourier  = 2;                 % imresize frequency horizontal
+%      options.show    = 1;                   % display results
+%      I = imread(&#8216;testimg1.jpg&#8217;);            % input image
+%      R = Bim_segbalu(I);                    % segmentation
+%      J = double(I(:,:,2))/256;              % normalized green channel
+%      [X,Xn] = Xfourier(J,R,options);     % Fourier features
+%      Bio_printfeatures(X,Xn)
+%
+%   See also Xharalick, Xclp, Xgabor, Xdct, Xlbp.
+%
+% (c) D.Mery, PUC-DCC, 2010
+% <a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.FeatureExtraction.Bfx_fourierdes">
+<span id="balu-featureextraction-bfx-fourierdes-module"></span><h2>balu.FeatureExtraction.Bfx_fourierdes module<a class="headerlink" href="#module-balu.FeatureExtraction.Bfx_fourierdes" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_fourierdes.Bfx_fourierdes">
+<code class="descclassname">balu.FeatureExtraction.Bfx_fourierdes.</code><code class="descname">Bfx_fourierdes</code><span class="sig-paren">(</span><em>R</em>, <em>options={}</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_fourierdes.Bfx_fourierdes" title="Permalink to this definition">¶</a></dt>
+<dd><p>X, Xn = Bfx_fourierdes(R, options)</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><blockquote class="first">
+<div><p>Computes the Fourier descriptors of a binary image R.</p>
+<p>options[&#8216;show&#8217;] = True display messages.
+options[&#8216;Nfourierdes&#8217;] number of descriptors.</p>
+<p>X is the feature vector
+Xn is the list of feature names.</p>
+<p>Reference:
+Zahn, C; Roskies, R.: Fourier Descriptors for Plane
+Closed Curves, IEEE Trans on Computers, C21(3):269-281, 1972</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_imageload
+from balu.FeatureExtraction import Bfx_fourierdes
+from balu.InputOutput import Bio_printfeatures
+from balu.ImageProcessing import Bim_segbalu</p>
+<p class="last">I = balu_imageload(&#8216;testimg1.jpg&#8217;)      # input image
+R = Bim_segbalu(I)                      # segmentation
+X, Xn = Bfx_fourierdes(R)               # Fourier descriptors
+Bio_printfeatures(X, Xn)</p>
+</dd>
+</dl>
+<p class="last">See also Bfx_fitellipse, Bfx_hugeo, Bfx_gupta, Bfx_flusser.</p>
+</dd>
+</dl>
+<p>(c) D.Mery, PUC-DCC, 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.FeatureExtraction.Bfx_geo">
+<span id="balu-featureextraction-bfx-geo-module"></span><h2>balu.FeatureExtraction.Bfx_geo module<a class="headerlink" href="#module-balu.FeatureExtraction.Bfx_geo" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_geo.Bfx_geo">
+<code class="descclassname">balu.FeatureExtraction.Bfx_geo.</code><code class="descname">Bfx_geo</code><span class="sig-paren">(</span><em>R</em>, <em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_geo.Bfx_geo" title="Permalink to this definition">¶</a></dt>
+<dd><p>X, Xn = Bfx_geo(R, options)
+X, Xn = Bfx_geo(L, options)</p>
+<p>Toolbox: Balu</p>
+<blockquote>
+<div><blockquote>
+<div><p>Gemteric feature extraction.</p>
+<p>This function calls gemetric feature extraction procedures of binary
+image R or labelled image L.</p>
+<p>X is the feature matrix (one feature per column, one sample per row),
+Xn is the list with the names of these features (see Example
+to see how it works).</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>Example 1: Extraction of one region image</dt>
+<dd><p class="first">from balu.FeatureExtraction import Bfx_geo
+from balu.ImageProcessing import Bim_segbalu
+from balu.InputOutput import Bio_printfeatures
+from balu.ImagesAndData import balu_imageload</p>
+<dl class="docutils">
+<dt>options = {&#8216;b&#8217;: [</dt>
+<dd>{&#8216;name&#8217;: &#8216;hugeo&#8217;,      &#8216;options&#8217;: {&#8216;show&#8217;: True}},                      # Hu moments
+{&#8216;name&#8217;: &#8216;flusser&#8217;,    &#8216;options&#8217;: {&#8216;show&#8217;: True}},                      # Flusser moments
+{&#8216;name&#8217;: &#8216;fourierdes&#8217;, &#8216;options&#8217;: {&#8216;show&#8217;: True, &#8216;Nfourierdes&#8217;: 12}}    # Fourier descriptors</dd>
+</dl>
+<p>]}</p>
+<p class="last">I = balu_imageload(&#8216;testimg1.jpg&#8217;)                      # input image
+R = Bim_segbalu(I)                                      # segmentation
+X, Xn = Bfx_geo(R, options)                             # geometric features
+Bio_printfeatures(X, Xn)</p>
+</dd>
+<dt>Example 2: Extraction of multiple regions image</dt>
+<dd><p class="first">from balu.FeatureExtraction import Bfx_geo
+from balu.ImageProcessing import Bim_segmowgli
+from balu.ImagesAndData import balu_imageload
+from matplotlib.pyplot import figure, imshow, title, hist, xlabel, show</p>
+<dl class="docutils">
+<dt>options = {&#8216;b&#8217;: [</dt>
+<dd>{&#8216;name&#8217;: &#8216;hugeo&#8217;,      &#8216;options&#8217;: {&#8216;show&#8217;: True}},                      # Hu moments
+{&#8216;name&#8217;: &#8216;basicgeo&#8217;,   &#8216;options&#8217;: {&#8216;show&#8217;: True}},                      # basic geometric features
+{&#8216;name&#8217;: &#8216;fourierdes&#8217;, &#8216;options&#8217;: {&#8216;show&#8217;: True, &#8216;Nfourierdes&#8217;: 12}}    # Fourier descriptors</dd>
+</dl>
+<p>]}</p>
+<p>I = balu_imageload(&#8216;rice.png&#8217;)                          # input image
+R, m = Bim_segmowgli(I, np.ones(I.shape), 40, 1.5)      # segmentation
+X, Xn = Bfx_geo(R, options)                             # geometric features
+figure(); hist(X[:, 11]); xlabel(Xn[11])                # area histogram
+ii = np.where(np.abs(X[:, 19]) &lt; 15)[0]                 # rice orientation
+K = np.zeros(R.shape)                                   # between -15 and 15 grad
+for i in range(ii.size):</p>
+<blockquote>
+<div>K = np.logical_or(K, R == ii[i])</div></blockquote>
+<p class="last">figure(); imshow(K, cmap=&#8217;gray&#8217;); title(&#8216;abs(orientation)&lt;15 grad&#8217;)
+show()</p>
+</dd>
+<dt>See also Bfx_basicgeo, Bfx_hugeo, Bfx_flusser, Bfx_gupta,</dt>
+<dd>Bfx_fitellipse, Bfx_fourierdes, Bfx_files.</dd>
+</dl>
+</div></blockquote>
+<p>(c) D.Mery, PUC-DCC, 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.FeatureExtraction.Bfx_haralick">
+<span id="balu-featureextraction-bfx-haralick-module"></span><h2>balu.FeatureExtraction.Bfx_haralick module<a class="headerlink" href="#module-balu.FeatureExtraction.Bfx_haralick" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_haralick.Bcoocurrencefeatures">
+<code class="descclassname">balu.FeatureExtraction.Bfx_haralick.</code><code class="descname">Bcoocurrencefeatures</code><span class="sig-paren">(</span><em>P</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_haralick.Bcoocurrencefeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tx = Bcoocurrencefeatures(P)</p>
+<p>Haralick texture features calculated from coocurrence matrix P.</p>
+<ol class="loweralpha simple" start="3">
+<li>D.Mery, PUC-DCC, Apr. 2008</li>
+</ol>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_haralick.Bcoocurrencematrix">
+<code class="descclassname">balu.FeatureExtraction.Bfx_haralick.</code><code class="descname">Bcoocurrencematrix</code><span class="sig-paren">(</span><em>I</em>, <em>R</em>, <em>Io</em>, <em>Jo</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_haralick.Bcoocurrencematrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>P = Bcoocurrencematrix(I, R, Io, Jo)</p>
+<p>Coocurrence matrix of the pixels of image I indicated by binary image R
+following the direction (Io,Jo).</p>
+<ol class="loweralpha simple" start="3">
+<li>D.Mery, PUC-DCC, Apr. 2008</li>
+</ol>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_haralick.Bfx_haralick">
+<code class="descclassname">balu.FeatureExtraction.Bfx_haralick.</code><code class="descname">Bfx_haralick</code><span class="sig-paren">(</span><em>I</em>, <em>R=None</em>, <em>options={}</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_haralick.Bfx_haralick" title="Permalink to this definition">¶</a></dt>
+<dd><p>X, Xn = Bfx_haralick(I, R, options)
+X, Xn = Bfx_haralick(I, options)</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><blockquote class="first">
+<div><p>Haralick texture features.</p>
+<p>X is a 28 elements vector with mean and range of mean and range of</p>
+<blockquote>
+<div>1 Angular Second Moment
+2 Contrast
+3 Correlacion
+4 Sum of squares
+5 Inverse Difference Moment
+6 Sum Average
+8 Sum Entropy
+7 Sum Variance
+9 Entropy</div></blockquote>
+<p>10 Difference Variance
+11 Difference Entropy
+12,13 Information Measures of Correlation
+14 Maximal Correlation Coefficient</p>
+<p>Xn is the list of name features.</p>
+<p>I is the image. R is the binary image that indicates which pixels of I will be
+computed.
+options[&#8216;dharalick&#8217;] is the distance in pixels used to compute the
+coocurrence matrix.
+options[&#8216;show&#8217;] = True display results.</p>
+<p>Reference:
+Haralick (1979): Statistical and Structural Approaches to Texture,
+Proc. IEEE, 67(5):786-804</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>Example 1: only one distance (3 pixels)</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_imageload
+from balu.ImageProcessing import Bim_segbalu
+from balu.FeatureExtraction import Bfx_haralick
+from balu.InputOutput import Bio_printfeatures</p>
+<p class="last">options = {&#8216;dharalick&#8217;: 3}              #3 pixels distance for coocurrence
+I = balu_imageload(&#8216;testimg1.jpg&#8217;)      #input image
+R, _, _ = Bim_segbalu(I)                #segmentation
+J = I[:, :, 1]                          #green channel
+X, Xn = Bfx_haralick(J, R, options)     #Haralick features
+Bio_printfeatures(X, Xn)</p>
+</dd>
+<dt>Example 2: five distances (1,2,...5 pixels)</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_imageload
+from balu.ImageProcessing import Bim_segbalu
+from balu.FeatureExtraction import Bfx_haralick
+from balu.InputOutput import Bio_printfeatures</p>
+<p class="last">options = {&#8216;dharalick&#8217;: [1, 2, 3, 4, 5]}         #3 and 5 pixels distance for coocurrence
+I = balu_imageload(&#8216;testimg1.jpg&#8217;)      #input image
+R, _, _ = Bim_segbalu(I)                #segmentation
+J = I[:, :, 1]                          #green channel
+X, Xn = Bfx_haralick(J, R, options)     #Haralick features
+Bio_printfeatures(X, Xn)</p>
+</dd>
+</dl>
+<p class="last">See also Bfx_gabor, Bfx_clp, Bfx_fourier, Bfx_dct, Bfx_lbp.</p>
+</dd>
+</dl>
+<p>(c) GRIMA-DCCUC, 2011
+<a class="reference external" href="http://grima.ing.puc.cl">http://grima.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.FeatureExtraction.Bfx_hugeo">
+<span id="balu-featureextraction-bfx-hugeo-module"></span><h2>balu.FeatureExtraction.Bfx_hugeo module<a class="headerlink" href="#module-balu.FeatureExtraction.Bfx_hugeo" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_hugeo.Bfx_hugeo">
+<code class="descclassname">balu.FeatureExtraction.Bfx_hugeo.</code><code class="descname">Bfx_hugeo</code><span class="sig-paren">(</span><em>R</em>, <em>options={}</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_hugeo.Bfx_hugeo" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>[X, Xn] = Bfx_hugeo(R)</dt>
+<dd><p class="first">[X, Xn] = Bfx_hugeo(R, options)</p>
+<p>Toolbox: Balu</p>
+<p>Extract the seven Hu moments from binary image R.</p>
+<p>options.show = 1 display mesagges.</p>
+<p>X is a 7 elements vector:
+X(i): Hu - moment i for i=1, ..., 7.
+Xn is the list of feature names.</p>
+<p class="last">Reference:
+Hu, M - K.: &#8220;Visual Pattern Recognition by Moment Invariants&#8221;,
+IRE Trans.Info.Theory IT - 8:179 - 187: 1962.</p>
+</dd>
+</dl>
+<p>Example:
+import numpy as np
+from balu.FeatureExtraction import Bfx_hugeo
+from balu.ImagesAndData import balu_imageload
+from balu.ImageProcessing import Bim_segbalu
+from skimage.morphology import label
+from matplotlib.pyplot import imshow, show</p>
+<p>I = balu_imageload(&#8216;testimg3.jpg&#8217;)              # input image
+R = Bim_segbalu(I)                              # segmentation
+L, n = label(R, neighbors=8, return_num=True)   # regions
+imshow(L, cmap=&#8217;gray&#8217;)
+X = None
+for i in range(1, n + 1):</p>
+<blockquote>
+<div><p>Xi, Xn = Bfx_hugeo(L == i)                  # Hu moments
+if X is None:</p>
+<blockquote>
+<div>X = Xi</div></blockquote>
+<dl class="docutils">
+<dt>else:</dt>
+<dd>X = np.vstack((X, Xi))</dd>
+</dl>
+</div></blockquote>
+<p>print X
+show()</p>
+<blockquote>
+<div>See also Bfx_basicgeo, Bfx_gupta, Bfx_fitellipse, Bfx_flusser.</div></blockquote>
+<p>(c)
+D.Mery, PUC - DCC, 2010
+http: // dmery.ing.puc.cl</p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-balu.FeatureExtraction.Bfx_lbp">
+<span id="balu-featureextraction-bfx-lbp-module"></span><h2>balu.FeatureExtraction.Bfx_lbp module<a class="headerlink" href="#module-balu.FeatureExtraction.Bfx_lbp" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_lbp.Bfx_lbp">
+<code class="descclassname">balu.FeatureExtraction.Bfx_lbp.</code><code class="descname">Bfx_lbp</code><span class="sig-paren">(</span><em>I</em>, <em>R</em>, <em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_lbp.Bfx_lbp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-balu.FeatureExtraction">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-balu.FeatureExtraction" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_geo">
+<code class="descclassname">balu.FeatureExtraction.</code><code class="descname">Bfx_geo</code><span class="sig-paren">(</span><em>R</em>, <em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_geo" title="Permalink to this definition">¶</a></dt>
+<dd><p>X, Xn = Bfx_geo(R, options)
+X, Xn = Bfx_geo(L, options)</p>
+<p>Toolbox: Balu</p>
+<blockquote>
+<div><blockquote>
+<div><p>Gemteric feature extraction.</p>
+<p>This function calls gemetric feature extraction procedures of binary
+image R or labelled image L.</p>
+<p>X is the feature matrix (one feature per column, one sample per row),
+Xn is the list with the names of these features (see Example
+to see how it works).</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>Example 1: Extraction of one region image</dt>
+<dd><p class="first">from balu.FeatureExtraction import Bfx_geo
+from balu.ImageProcessing import Bim_segbalu
+from balu.InputOutput import Bio_printfeatures
+from balu.ImagesAndData import balu_imageload</p>
+<dl class="docutils">
+<dt>options = {&#8216;b&#8217;: [</dt>
+<dd>{&#8216;name&#8217;: &#8216;hugeo&#8217;,      &#8216;options&#8217;: {&#8216;show&#8217;: True}},                      # Hu moments
+{&#8216;name&#8217;: &#8216;flusser&#8217;,    &#8216;options&#8217;: {&#8216;show&#8217;: True}},                      # Flusser moments
+{&#8216;name&#8217;: &#8216;fourierdes&#8217;, &#8216;options&#8217;: {&#8216;show&#8217;: True, &#8216;Nfourierdes&#8217;: 12}}    # Fourier descriptors</dd>
+</dl>
+<p>]}</p>
+<p class="last">I = balu_imageload(&#8216;testimg1.jpg&#8217;)                      # input image
+R = Bim_segbalu(I)                                      # segmentation
+X, Xn = Bfx_geo(R, options)                             # geometric features
+Bio_printfeatures(X, Xn)</p>
+</dd>
+<dt>Example 2: Extraction of multiple regions image</dt>
+<dd><p class="first">from balu.FeatureExtraction import Bfx_geo
+from balu.ImageProcessing import Bim_segmowgli
+from balu.ImagesAndData import balu_imageload
+from matplotlib.pyplot import figure, imshow, title, hist, xlabel, show</p>
+<dl class="docutils">
+<dt>options = {&#8216;b&#8217;: [</dt>
+<dd>{&#8216;name&#8217;: &#8216;hugeo&#8217;,      &#8216;options&#8217;: {&#8216;show&#8217;: True}},                      # Hu moments
+{&#8216;name&#8217;: &#8216;basicgeo&#8217;,   &#8216;options&#8217;: {&#8216;show&#8217;: True}},                      # basic geometric features
+{&#8216;name&#8217;: &#8216;fourierdes&#8217;, &#8216;options&#8217;: {&#8216;show&#8217;: True, &#8216;Nfourierdes&#8217;: 12}}    # Fourier descriptors</dd>
+</dl>
+<p>]}</p>
+<p>I = balu_imageload(&#8216;rice.png&#8217;)                          # input image
+R, m = Bim_segmowgli(I, np.ones(I.shape), 40, 1.5)      # segmentation
+X, Xn = Bfx_geo(R, options)                             # geometric features
+figure(); hist(X[:, 11]); xlabel(Xn[11])                # area histogram
+ii = np.where(np.abs(X[:, 19]) &lt; 15)[0]                 # rice orientation
+K = np.zeros(R.shape)                                   # between -15 and 15 grad
+for i in range(ii.size):</p>
+<blockquote>
+<div>K = np.logical_or(K, R == ii[i])</div></blockquote>
+<p class="last">figure(); imshow(K, cmap=&#8217;gray&#8217;); title(&#8216;abs(orientation)&lt;15 grad&#8217;)
+show()</p>
+</dd>
+<dt>See also Bfx_basicgeo, Bfx_hugeo, Bfx_flusser, Bfx_gupta,</dt>
+<dd>Bfx_fitellipse, Bfx_fourierdes, Bfx_files.</dd>
+</dl>
+</div></blockquote>
+<p>(c) D.Mery, PUC-DCC, 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_fourier">
+<code class="descclassname">balu.FeatureExtraction.</code><code class="descname">Bfx_fourier</code><span class="sig-paren">(</span><em>I</em>, <em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_fourier" title="Permalink to this definition">¶</a></dt>
+<dd><p>% [X,Xn,Xu] = Xfourier(I,R,options)
+% [X,Xn,Xu] = Xfourier(I,options)
+%
+% Toolbox Xvis: Fourier features
+%
+%    X is the features vector, Xn is the list of feature names (see Example
+%    to see how it works).
+%
+%   Example:
+%      options.Nfourier  = 64;                % imresize vertical
+%      options.Mfourier  = 64;                % imresize horizontal
+%      options.mfourier  = 2;                 % imresize frequency vertical
+%      options.nfourier  = 2;                 % imresize frequency horizontal
+%      options.show    = 1;                   % display results
+%      I = imread(&#8216;testimg1.jpg&#8217;);            % input image
+%      R = Bim_segbalu(I);                    % segmentation
+%      J = double(I(:,:,2))/256;              % normalized green channel
+%      [X,Xn] = Xfourier(J,R,options);     % Fourier features
+%      Bio_printfeatures(X,Xn)
+%
+%   See also Xharalick, Xclp, Xgabor, Xdct, Xlbp.
+%
+% (c) D.Mery, PUC-DCC, 2010
+% <a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_all">
+<code class="descclassname">balu.FeatureExtraction.</code><code class="descname">Bfx_all</code><span class="sig-paren">(</span><em>I</em>, <em>R=None</em>, <em>options=None</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>X, Xn = Bfx_all(I,R,options)
+X, Xn = Bfx_all(I,options)</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><p class="first">All pixels.</p>
+<p>X is the features vector, Xn is the list feature names (see Example to
+see how it works).</p>
+<dl class="last docutils">
+<dt>Example:</dt>
+<dd>I = imread(&#8216;testimg1.jpg&#8217;)             # input image
+X, Xn = Bfx_all(I)                   # all pixels</dd>
+</dl>
+</dd>
+</dl>
+<p>(c) D.Mery, PUC-DCC, 2012
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_basicgeo">
+<code class="descclassname">balu.FeatureExtraction.</code><code class="descname">Bfx_basicgeo</code><span class="sig-paren">(</span><em>R</em>, <em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_basicgeo" title="Permalink to this definition">¶</a></dt>
+<dd><p>X, Xn = Bfx_geobasic(R, options)</p>
+<p>Toolbox: Balu</p>
+<p>Standard geometric features of a binary image R.
+This function calls regionprops of Scikit image library.</p>
+<p>options[&#8216;show&#8217;] = True display messages.</p>
+<p>X is the feature vector
+Xn is the list of feature names.</p>
+<p>See example:</p>
+<p>Example:
+from balu.ImagesAndData import balu_imageload
+I = balu_imageload(&#8216;testimg1.jpg&#8217;) #input image
+R = Bim_segbalu(I) # segmentation
+X, Xn = Bfx_basicgeo(R); # basic geometric features
+Bio_printfeatures(X, Xn)</p>
+<p>See also Bfx_fitellipse, Bfx_hugeo, Bfx_gupta, Bfx_flusser.</p>
+<p>(c) D.Mery, PUC - DCC, 2010
+http: // dmery.ing.puc.cl</p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_hugeo">
+<code class="descclassname">balu.FeatureExtraction.</code><code class="descname">Bfx_hugeo</code><span class="sig-paren">(</span><em>R</em>, <em>options={}</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_hugeo" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>[X, Xn] = Bfx_hugeo(R)</dt>
+<dd><p class="first">[X, Xn] = Bfx_hugeo(R, options)</p>
+<p>Toolbox: Balu</p>
+<p>Extract the seven Hu moments from binary image R.</p>
+<p>options.show = 1 display mesagges.</p>
+<p>X is a 7 elements vector:
+X(i): Hu - moment i for i=1, ..., 7.
+Xn is the list of feature names.</p>
+<p class="last">Reference:
+Hu, M - K.: &#8220;Visual Pattern Recognition by Moment Invariants&#8221;,
+IRE Trans.Info.Theory IT - 8:179 - 187: 1962.</p>
+</dd>
+</dl>
+<p>Example:
+import numpy as np
+from balu.FeatureExtraction import Bfx_hugeo
+from balu.ImagesAndData import balu_imageload
+from balu.ImageProcessing import Bim_segbalu
+from skimage.morphology import label
+from matplotlib.pyplot import imshow, show</p>
+<p>I = balu_imageload(&#8216;testimg3.jpg&#8217;)              # input image
+R = Bim_segbalu(I)                              # segmentation
+L, n = label(R, neighbors=8, return_num=True)   # regions
+imshow(L, cmap=&#8217;gray&#8217;)
+X = None
+for i in range(1, n + 1):</p>
+<blockquote>
+<div><p>Xi, Xn = Bfx_hugeo(L == i)                  # Hu moments
+if X is None:</p>
+<blockquote>
+<div>X = Xi</div></blockquote>
+<dl class="docutils">
+<dt>else:</dt>
+<dd>X = np.vstack((X, Xi))</dd>
+</dl>
+</div></blockquote>
+<p>print X
+show()</p>
+<blockquote>
+<div>See also Bfx_basicgeo, Bfx_gupta, Bfx_fitellipse, Bfx_flusser.</div></blockquote>
+<p>(c)
+D.Mery, PUC - DCC, 2010
+http: // dmery.ing.puc.cl</p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_fourierdes">
+<code class="descclassname">balu.FeatureExtraction.</code><code class="descname">Bfx_fourierdes</code><span class="sig-paren">(</span><em>R</em>, <em>options={}</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_fourierdes" title="Permalink to this definition">¶</a></dt>
+<dd><p>X, Xn = Bfx_fourierdes(R, options)</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><blockquote class="first">
+<div><p>Computes the Fourier descriptors of a binary image R.</p>
+<p>options[&#8216;show&#8217;] = True display messages.
+options[&#8216;Nfourierdes&#8217;] number of descriptors.</p>
+<p>X is the feature vector
+Xn is the list of feature names.</p>
+<p>Reference:
+Zahn, C; Roskies, R.: Fourier Descriptors for Plane
+Closed Curves, IEEE Trans on Computers, C21(3):269-281, 1972</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_imageload
+from balu.FeatureExtraction import Bfx_fourierdes
+from balu.InputOutput import Bio_printfeatures
+from balu.ImageProcessing import Bim_segbalu</p>
+<p class="last">I = balu_imageload(&#8216;testimg1.jpg&#8217;)      # input image
+R = Bim_segbalu(I)                      # segmentation
+X, Xn = Bfx_fourierdes(R)               # Fourier descriptors
+Bio_printfeatures(X, Xn)</p>
+</dd>
+</dl>
+<p class="last">See also Bfx_fitellipse, Bfx_hugeo, Bfx_gupta, Bfx_flusser.</p>
+</dd>
+</dl>
+<p>(c) D.Mery, PUC-DCC, 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descclassname">balu.FeatureExtraction.</code><code class="descname">Bfx_geo</code><span class="sig-paren">(</span><em>R</em>, <em>options</em><span class="sig-paren">)</span></dt>
+<dd><p>X, Xn = Bfx_geo(R, options)
+X, Xn = Bfx_geo(L, options)</p>
+<p>Toolbox: Balu</p>
+<blockquote>
+<div><blockquote>
+<div><p>Gemteric feature extraction.</p>
+<p>This function calls gemetric feature extraction procedures of binary
+image R or labelled image L.</p>
+<p>X is the feature matrix (one feature per column, one sample per row),
+Xn is the list with the names of these features (see Example
+to see how it works).</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>Example 1: Extraction of one region image</dt>
+<dd><p class="first">from balu.FeatureExtraction import Bfx_geo
+from balu.ImageProcessing import Bim_segbalu
+from balu.InputOutput import Bio_printfeatures
+from balu.ImagesAndData import balu_imageload</p>
+<dl class="docutils">
+<dt>options = {&#8216;b&#8217;: [</dt>
+<dd>{&#8216;name&#8217;: &#8216;hugeo&#8217;,      &#8216;options&#8217;: {&#8216;show&#8217;: True}},                      # Hu moments
+{&#8216;name&#8217;: &#8216;flusser&#8217;,    &#8216;options&#8217;: {&#8216;show&#8217;: True}},                      # Flusser moments
+{&#8216;name&#8217;: &#8216;fourierdes&#8217;, &#8216;options&#8217;: {&#8216;show&#8217;: True, &#8216;Nfourierdes&#8217;: 12}}    # Fourier descriptors</dd>
+</dl>
+<p>]}</p>
+<p class="last">I = balu_imageload(&#8216;testimg1.jpg&#8217;)                      # input image
+R = Bim_segbalu(I)                                      # segmentation
+X, Xn = Bfx_geo(R, options)                             # geometric features
+Bio_printfeatures(X, Xn)</p>
+</dd>
+<dt>Example 2: Extraction of multiple regions image</dt>
+<dd><p class="first">from balu.FeatureExtraction import Bfx_geo
+from balu.ImageProcessing import Bim_segmowgli
+from balu.ImagesAndData import balu_imageload
+from matplotlib.pyplot import figure, imshow, title, hist, xlabel, show</p>
+<dl class="docutils">
+<dt>options = {&#8216;b&#8217;: [</dt>
+<dd>{&#8216;name&#8217;: &#8216;hugeo&#8217;,      &#8216;options&#8217;: {&#8216;show&#8217;: True}},                      # Hu moments
+{&#8216;name&#8217;: &#8216;basicgeo&#8217;,   &#8216;options&#8217;: {&#8216;show&#8217;: True}},                      # basic geometric features
+{&#8216;name&#8217;: &#8216;fourierdes&#8217;, &#8216;options&#8217;: {&#8216;show&#8217;: True, &#8216;Nfourierdes&#8217;: 12}}    # Fourier descriptors</dd>
+</dl>
+<p>]}</p>
+<p>I = balu_imageload(&#8216;rice.png&#8217;)                          # input image
+R, m = Bim_segmowgli(I, np.ones(I.shape), 40, 1.5)      # segmentation
+X, Xn = Bfx_geo(R, options)                             # geometric features
+figure(); hist(X[:, 11]); xlabel(Xn[11])                # area histogram
+ii = np.where(np.abs(X[:, 19]) &lt; 15)[0]                 # rice orientation
+K = np.zeros(R.shape)                                   # between -15 and 15 grad
+for i in range(ii.size):</p>
+<blockquote>
+<div>K = np.logical_or(K, R == ii[i])</div></blockquote>
+<p class="last">figure(); imshow(K, cmap=&#8217;gray&#8217;); title(&#8216;abs(orientation)&lt;15 grad&#8217;)
+show()</p>
+</dd>
+<dt>See also Bfx_basicgeo, Bfx_hugeo, Bfx_flusser, Bfx_gupta,</dt>
+<dd>Bfx_fitellipse, Bfx_fourierdes, Bfx_files.</dd>
+</dl>
+</div></blockquote>
+<p>(c) D.Mery, PUC-DCC, 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_fitellipse">
+<code class="descclassname">balu.FeatureExtraction.</code><code class="descname">Bfx_fitellipse</code><span class="sig-paren">(</span><em>R</em>, <em>options=None</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_fitellipse" title="Permalink to this definition">¶</a></dt>
+<dd><p>X, Xn = Bfx_fitellipse(R, options)
+X, Xn = Bfx_fitellipse(R)</p>
+<p>Toolbox: Balu</p>
+<blockquote>
+<div><blockquote>
+<div><p>Fit ellipse for the boundary of a binary image R.</p>
+<p>options.show = 1 display mesagges.</p>
+<dl class="docutils">
+<dt>X is a 6 elements vector:</dt>
+<dd><p class="first">X(1): Ellipse-centre i direction
+X(2): Ellipse-centre j direction
+X(3): Ellipse-minor axis
+X(4): Ellipse-major axis
+X(5): Ellipse-orientation
+X(6): Ellipse-eccentricity
+X(7): Ellipse-area</p>
+<p>Xn is the list of feature names.</p>
+<p class="last">Xn is the list of feature names.</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>Reference:</dt>
+<dd>Fitzgibbon, A.; Pilu, M. &amp; Fisher, R.B. (1999): Direct Least Square
+Fitting Ellipses, IEEE Trans. Pattern Analysis and Machine
+Intelligence, 21(5): 476-480.</dd>
+<dt>Example:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_imageload
+from balu.ImageProcessing import Bim_segbalu
+from balu.FeatureExtraction import Bfx_fitellipse
+from balu.InputOutput import Bio_printfeatures</p>
+<p class="last">I = balu_imageload(&#8216;testimg1.jpg&#8217;)              # input image
+R, E, J = Bim_segbalu(I)                        # segmentation
+X, Xn = Bfx_fitellipse(R)                       # ellipse features
+Bio_printfeatures(X, Xn)</p>
+</dd>
+</dl>
+<p>See also Bfx_basicgeo, Bfx_hugeo, Bfx_gupta, Bfx_flusser.</p>
+</div></blockquote>
+<p>(c) D.Mery, PUC-DCC, 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_flusser">
+<code class="descclassname">balu.FeatureExtraction.</code><code class="descname">Bfx_flusser</code><span class="sig-paren">(</span><em>R</em>, <em>options={}</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_flusser" title="Permalink to this definition">¶</a></dt>
+<dd><p>X, Xn = Bfx_flusser(R, options)
+X, Xn = Bfx_flusser(R)</p>
+<p>Toolbox: Balu</p>
+<blockquote>
+<div><blockquote>
+<div><p>Extract the four Flusser moments from binary image R.</p>
+<p>options.show = 1 display mesagges.</p>
+<dl class="docutils">
+<dt>X is a 4 elements vector:</dt>
+<dd>X(i): Flusser-moment i for i=1,...,4.</dd>
+</dl>
+<p>Xn is the list of feature names.</p>
+<p>Reference:
+Sonka et al. (1998): Image Processing, Analysis, and Machine Vision,
+PWS Publishing. Pacific Grove, Ca, 2nd Edition.</p>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_imageload
+from balu.ImageProcessing import Bim_segbalu
+from skimage.morphology import label
+from balu.FeatureExtraction import Bfx_flusser</p>
+<p>I = balu_imageload(&#8216;testimg3.jpg&#8217;)           # input image
+R, _, _ = Bim_segbalu(I)                           # segmentation
+L = label(R)                                 # regions
+n = int(L.max())
+imshow(L)
+show()
+X = np.array([])
+for i in range(n):</p>
+<blockquote>
+<div><p>Xi, Xn = Bfx_flusser(L == i + 1)         # Flusser moments
+if X.size == 0:</p>
+<blockquote>
+<div>X = Xi</div></blockquote>
+<dl class="docutils">
+<dt>else:</dt>
+<dd>X = np.vstack((X, Xi))</dd>
+</dl>
+</div></blockquote>
+<p class="last">print X</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>See also Bfx_standard, Bfx_hugeo, Bfx_fitellipse, Bfx_gupta.</p>
+</div></blockquote>
+<p>(c) D.Mery, PUC-DCC, 2010
+<a class="reference external" href="http://dmery.ing.puc.cl">http://dmery.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="balu.FeatureExtraction.Bfx_haralick">
+<code class="descclassname">balu.FeatureExtraction.</code><code class="descname">Bfx_haralick</code><span class="sig-paren">(</span><em>I</em>, <em>R=None</em>, <em>options={}</em><span class="sig-paren">)</span><a class="headerlink" href="#balu.FeatureExtraction.Bfx_haralick" title="Permalink to this definition">¶</a></dt>
+<dd><p>X, Xn = Bfx_haralick(I, R, options)
+X, Xn = Bfx_haralick(I, options)</p>
+<dl class="docutils">
+<dt>Toolbox: Balu</dt>
+<dd><blockquote class="first">
+<div><p>Haralick texture features.</p>
+<p>X is a 28 elements vector with mean and range of mean and range of</p>
+<blockquote>
+<div>1 Angular Second Moment
+2 Contrast
+3 Correlacion
+4 Sum of squares
+5 Inverse Difference Moment
+6 Sum Average
+8 Sum Entropy
+7 Sum Variance
+9 Entropy</div></blockquote>
+<p>10 Difference Variance
+11 Difference Entropy
+12,13 Information Measures of Correlation
+14 Maximal Correlation Coefficient</p>
+<p>Xn is the list of name features.</p>
+<p>I is the image. R is the binary image that indicates which pixels of I will be
+computed.
+options[&#8216;dharalick&#8217;] is the distance in pixels used to compute the
+coocurrence matrix.
+options[&#8216;show&#8217;] = True display results.</p>
+<p>Reference:
+Haralick (1979): Statistical and Structural Approaches to Texture,
+Proc. IEEE, 67(5):786-804</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>Example 1: only one distance (3 pixels)</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_imageload
+from balu.ImageProcessing import Bim_segbalu
+from balu.FeatureExtraction import Bfx_haralick
+from balu.InputOutput import Bio_printfeatures</p>
+<p class="last">options = {&#8216;dharalick&#8217;: 3}              #3 pixels distance for coocurrence
+I = balu_imageload(&#8216;testimg1.jpg&#8217;)      #input image
+R, _, _ = Bim_segbalu(I)                #segmentation
+J = I[:, :, 1]                          #green channel
+X, Xn = Bfx_haralick(J, R, options)     #Haralick features
+Bio_printfeatures(X, Xn)</p>
+</dd>
+<dt>Example 2: five distances (1,2,...5 pixels)</dt>
+<dd><p class="first">from balu.ImagesAndData import balu_imageload
+from balu.ImageProcessing import Bim_segbalu
+from balu.FeatureExtraction import Bfx_haralick
+from balu.InputOutput import Bio_printfeatures</p>
+<p class="last">options = {&#8216;dharalick&#8217;: [1, 2, 3, 4, 5]}         #3 and 5 pixels distance for coocurrence
+I = balu_imageload(&#8216;testimg1.jpg&#8217;)      #input image
+R, _, _ = Bim_segbalu(I)                #segmentation
+J = I[:, :, 1]                          #green channel
+X, Xn = Bfx_haralick(J, R, options)     #Haralick features
+Bio_printfeatures(X, Xn)</p>
+</dd>
+</dl>
+<p class="last">See also Bfx_gabor, Bfx_clp, Bfx_fourier, Bfx_dct, Bfx_lbp.</p>
+</dd>
+</dl>
+<p>(c) GRIMA-DCCUC, 2011
+<a class="reference external" href="http://grima.ing.puc.cl">http://grima.ing.puc.cl</a></p>
+<p>With collaboration from:
+Diego Patiño (<a class="reference external" href="mailto:dapatinoco&#37;&#52;&#48;unal&#46;edu&#46;co">dapatinoco<span>&#64;</span>unal<span>&#46;</span>edu<span>&#46;</span>co</a>) -&gt; Translated implementation into python (2016)</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">balu.FeatureExtraction package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-balu.FeatureExtraction.Bfx_all">balu.FeatureExtraction.Bfx_all module</a></li>
+<li><a class="reference internal" href="#module-balu.FeatureExtraction.Bfx_basicgeo">balu.FeatureExtraction.Bfx_basicgeo module</a></li>
+<li><a class="reference internal" href="#module-balu.FeatureExtraction.Bfx_fitellipse">balu.FeatureExtraction.Bfx_fitellipse module</a></li>
+<li><a class="reference internal" href="#module-balu.FeatureExtraction.Bfx_flusser">balu.FeatureExtraction.Bfx_flusser module</a></li>
+<li><a class="reference internal" href="#module-balu.FeatureExtraction.Bfx_fourier">balu.FeatureExtraction.Bfx_fourier module</a></li>
+<li><a class="reference internal" href="#module-balu.FeatureExtraction.Bfx_fourierdes">balu.FeatureExtraction.Bfx_fourierdes module</a></li>
+<li><a class="reference internal" href="#module-balu.FeatureExtraction.Bfx_geo">balu.FeatureExtraction.Bfx_geo module</a></li>
+<li><a class="reference internal" href="#module-balu.FeatureExtraction.Bfx_haralick">balu.FeatureExtraction.Bfx_haralick module</a></li>
+<li><a class="reference internal" href="#module-balu.FeatureExtraction.Bfx_hugeo">balu.FeatureExtraction.Bfx_hugeo module</a></li>
+<li><a class="reference internal" href="#module-balu.FeatureExtraction.Bfx_lbp">balu.FeatureExtraction.Bfx_lbp module</a></li>
+<li><a class="reference internal" href="#module-balu.FeatureExtraction">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/rst/balu.FeatureExtraction.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">balu 1.0.14 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Diego Patiño.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>
