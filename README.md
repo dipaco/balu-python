@@ -27,7 +27,7 @@ Python implementation of Balu Toolbox by Domingo Mery (http://dmery.ing.puc.cl/i
 ## Usage:
 
 All commands in Balu have its own docstring documentation with usage methods and examples:
-```
+```python
 from balu.Classification import Bcl_lda
 help(Bcl_lda)
 ```
