@@ -25,7 +25,7 @@ Python implementation of Balu Toolbox by Domingo Mery (http://dmery.ing.puc.cl/i
 ### Linux:
 
 ## Usage:
-`python
+```python
 from balu.ImagesAndData import balu_load
 from balu.Classification import Bcl_lda
 from balu.InputOutput import Bio_plotfeatures
@@ -40,7 +40,7 @@ Bio_plotfeatures(X, d)                  # plot feature space
 op = {'p': []}
 ds, options = Bcl_lda(X, d, Xt, op)     # LDA classifier
 p = Bev_performance(ds, dt)             # performance on test data
-print p`
+print p```
     
 ## NOTES:
 - We recommend to use a virtual environment to isolate the library from the system installed packages. 
