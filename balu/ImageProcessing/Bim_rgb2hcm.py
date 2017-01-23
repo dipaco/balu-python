@@ -27,6 +27,9 @@ def Bim_rgb2hcm(RGB):
 
      (c) D.Mery, PUC-DCC, 2011
      http://dmery.ing.puc.cl
+
+     With collaboration from:
+     Diego Patiño (dapatinoco@unal.edu.co) -> Translated implementation into python (2016)
     """
 
     RGB = RGB.astype(float)

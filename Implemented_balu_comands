@@ -7,6 +7,8 @@ FeatureExtraction:
     Bfx_geo
     Bfx_fitellipse
     Bfx_flusser
+    Bfx_lbp (The options 'semantic' was removed and the 'mappingtype' options changed according with the parameters
+             received by local_binary_pattern function from scikit-image)
 
 FeatureAnalysis:
     Bfa_jfisher
@@ -28,6 +30,8 @@ ImageProcessing:
     Bim_segbalu
     Bim_segotsu
     Bim_segmowgli
+    Bim_inthist
+    Bim_inthistread
 
 ImagesAndData:
     (only python version) balu_load -> it can only read .mat files for now
