@@ -1,0 +1,13 @@
+
+- There is an interesting web page about command equivalency in python for Matlab users:
+https://docs.scipy.org/doc/numpy-dev/user/numpy-for-matlab-users.html
+
+- To maintaing consistency through the code, every new command should be implemented in its own .py file. Then
+  the correspondent __init__.py file should included like this:
+
+  from .Bft_pca import Bft_pca
+
+  This way we about long importing lines.
+
+- Before releasing a new command all the examples in the command's documentations should work according with Balu
+  philosophy.
