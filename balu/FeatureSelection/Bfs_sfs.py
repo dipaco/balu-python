@@ -124,9 +124,9 @@ def Bfs_sfs(X, d, options={'show': True}, hold=False):
                 plt.title('Selected features')
                 plt.bar(np.arange(m) + 0.5, J)
 
-                print(', Jmax = {0:8.4f}\n'.format(Jmax))
+                print(', Jmax = {0:8.4f}, Feature {1} selected.\n'.format(Jmax, int(selec[-1])))
                 for i in range(selec.size):
-                    plt.text(i+0.4, J[i]*1.05, '{0}'.format(selec[i]))
+                    plt.text(i+0.4, J[i]*1.05, '{0}'.format(int(selec[i])))
 
                 plt.show(block=False)
                 plt.pause(0.001)

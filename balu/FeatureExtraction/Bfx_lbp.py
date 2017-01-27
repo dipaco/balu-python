@@ -11,9 +11,6 @@ from skimage.morphology import square
 def Bfx_lbp(I, R=None, options={}):
     """
      X, Xn, options = Bfx_lbp(I, R, options)
-     [X,Xn,options] = Bfx_lbp(I,options)
-     [X,Xn] = Bfx_lbp(I,R,options)
-     [X,Xn] = Bfx_lbp(I,options)
 
      Toolbox: Balu
         Local Binary Patterns features
