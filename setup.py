@@ -19,5 +19,6 @@ setup(
       'matplotlib>=1.5.2,<2',
       'scikit-image>=0.12.3,<1',
       'scikit-learn>=0.18,<1',
+      'mahotas>=1.4.3,<2',
   ],
 )
