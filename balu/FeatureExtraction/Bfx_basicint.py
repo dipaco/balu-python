@@ -27,11 +27,11 @@ def Bfx_basicint(I,R,*args):
         from balu.ImageProcessing import Bim_segbalu
         from balu.ImagesAndData import balu_imageload
         from balu.FeatureExtraction import Bfx_basicint
-        options = {'show': True, 'mask': 5}   % Gauss mask for gradient computation and display results
-        I = balu_imageload(('testimg1.jpg');             % input image
-        I = rgb2gray(I,dtype=np.uint8)           % To grayscale
-        R,_,_ = Bim_segbalu(I);                     % segmentation
-        X, Xn = Bfx_basicint(I,R,options)     % basic intenisty features
+        options = {'show': True, 'mask': 5}   # Gauss mask for gradient computation and display results
+        I = balu_imageload(('testimg1.jpg');             # input image
+        I = rgb2gray(I,dtype=np.uint8)           # To grayscale
+        R,_,_ = Bim_segbalu(I);                     # segmentation
+        X, Xn = Bfx_basicint(I,R,options)     # basic intenisty features
 
     See also Bfx_haralick, Bfx_clp, Bfx_gabor, Bfx_fourier, Bfx_dct, Bfx_lbp.
         

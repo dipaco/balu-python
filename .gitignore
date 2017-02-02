@@ -1,1 +1,9 @@
 .DS_Store
+*.pyc
+doc/_build/*
+dist/*
+balu.egg-info/dependency_links.txt
+balu.egg-info/PKG-INFO
+balu.egg-info/requires.txt
+balu.egg-info/SOURCES.txt
+balu.egg-info/top_level.txt
