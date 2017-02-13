@@ -53,6 +53,7 @@ FeatureSelection:
 PerformanceEvaluation:
     Bev_confusion
     Bev_performance
+    Bev_crossval
 
 Classification:
     Bcl_lda

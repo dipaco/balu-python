@@ -85,7 +85,7 @@ def Bcl_nn(*args):
     if 'iter' not in options:
         options['iter'] = 100
 
-    options['string'] = 'nn,{0} '.format(options['method'])
+    options['string'] = 'nn,{0}    '.format(options['method'])
     if train:
 
         all_activation_functions = ['identity', 'logistic', 'tanh', 'relu']

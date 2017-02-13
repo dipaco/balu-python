@@ -30,10 +30,9 @@ def Bds_nostratify(X, d, s):
     Xr = X[j, :]
     dr = d[j, 0]
     r = np.floor(s * N)
-    R = np.array([[0, r], [r, N]]).astype(int)
-    X1 = Xr[R[0, 0]:R[0, 1], :]
-    d1 = dr[R[0, 0]:R[0, 1]]
-    X2 = Xr[R[1, 0]:R[1, 1], :]
-    d2 = dr[R[1, 0]:R[1, 1]]
+    X1 = Xr[0:r, :]
+    d1 = dr[0:r]
+    X2 = Xr[r:, :]
+    d2 = dr[r:]
 
     return X1, d1, X2, d2
