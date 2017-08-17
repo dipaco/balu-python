@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import numpy as np
 from balu.Classification import Bcl_structure
 from .Bev_performance import Bev_performance
@@ -78,7 +79,7 @@ def Bev_crossval(X, d, options):
 
             p, ci = Bev_crossval(X, d, op)                                        # cross valitadion
             print(p)
-            print(ci)                                     % cross valitadion
+            print(ci)
 
         The mean performance of classifier k is given in p(k), and the
         confidence intervals for c*100% are in ci(k,:).
@@ -113,8 +114,8 @@ def Bev_crossval(X, d, options):
     n = len(b)
     N = X.shape[0]
 
-    dmin = d.min()
-    dmax = d.max()
+    dmin = int(d.min())
+    dmax = int(d.max())
     nn = range(dmin, dmax+1)
 
     p = np.zeros(n)
