@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-from mahotas import bwperim
 import numpy as np
 import scipy.stats.stats as st
+from skimage.morphology import erosion
 from balu.ImageProcessing import Bim_d1
 from balu.ImageProcessing import Bim_d2
+
 
 def Bfx_basicint(I,R,*args):
     """
@@ -53,7 +54,8 @@ def Bfx_basicint(I,R,*args):
     if 'mask' not in options:
         options['mask'] = 15
     
-    E = bwperim(R, n=4)
+    #E = bwperim(R, n=4)
+    E = np.logical_xor(R, erosion(R))
     ii = R == 1
     jj = np.where(R.ravel() == 0)[0]
     kk = E==1 

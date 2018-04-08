@@ -3,7 +3,8 @@
 from scipy import signal
 import numpy as np
 
-def Bim_d1(X,m):
+
+def Bim_d1(X, m):
     """
     J,_,_ = Bim_d1(I,m);
     
@@ -36,21 +37,21 @@ def Bim_d1(X,m):
     s2 = sigma**2
     Gx = np.zeros((m,m))
     Gy = np.zeros((m,m))
-    c = (m-1)/2
-    for i in range (0,m):
-       x = i+1-c
-       x2 = (i+1-c)**2
-       for j in range (0,m):
-          y = j+1-c
-          y2 = (j+1-c)**2
+    c = (m-1)//2
+    for i in range(0,m):
+       x = i-c
+       x2 = (i-c)**2
+       for j in range(0,m):
+          y = j-c
+          y2 = (j-c)**2
           ex = np.exp(-(x2+y2)/2.0/s2)   
           Gx[i,j] = y*ex
           Gy[i,j] = x*ex
     mgx = np.sum(np.abs(np.asarray(Gx).ravel()))/2.0*(0.3192*m-0.3543)
     Gx = Gx/mgx
     Gy = Gy/mgx
-    Yx = signal.convolve2d(X,Gx,'same');
-    Yy = signal.convolve2d(X,Gy,'same');
+    Yx = signal.convolve2d(X,Gx,'same')
+    Yy = signal.convolve2d(X,Gy,'same')
     Y0 = np.sqrt(Yx*Yx+Yy*Yy)
     N,M = X.shape
     Y = np.zeros((N,M))
